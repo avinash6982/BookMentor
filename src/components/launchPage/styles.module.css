@@ -1,0 +1,19 @@
+.columnCenter {
+    display: grid;
+    place-items: center;
+}
+.heading {
+    color: rgb(0, 0, 114);
+}
+.inputField {
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid rgb(0, 0, 114);
+}
+.errorMessageContainer {
+    height: 0.8em;
+}
+.signinButton {
+    height: 50px;
+    border-radius: 25px;
+}
