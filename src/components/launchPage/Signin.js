@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
+import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
 import classes from "./styles.module.css";
 
@@ -15,9 +16,12 @@ export default function Signin() {
                 <Form.Control className={classes.inputField} type="password" placeholder="Password" />
             </Form.Group>
 
-            <Button variant="primary" className={classes.signinButton} type="submit">
-                Submit
-            </Button>
+            <div className={classes.signinContainer}>
+                <Button variant="primary" className={classes.signinButton} type="submit">
+                    Submit
+                    <FontAwesomeIcon title="arrow-right" marginLeft="10px" />
+                </Button>
+            </div>
         </Form>
     );
 }

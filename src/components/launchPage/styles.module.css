@@ -13,7 +13,13 @@
 .errorMessageContainer {
     height: 0.8em;
 }
+.signinContainer {
+    width: 100%;
+    display: flex;
+}
 .signinButton {
     height: 50px;
     border-radius: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
