@@ -6,7 +6,7 @@ import classes from "./styles.module.css";
 const profiles = [0, 1, 2, 3, 4, 5, 6]
 
 const Profile = () =>
-    <Col md={6} className={classes.column}>
+    <Col sm={6}>
         <Card className={classes.profileContainer}>
             <Row>
                 <Col md={4}>
@@ -71,6 +71,9 @@ const Results = () => {
                     Object.values(profiles)
                         .map(item => <Profile />)
                 }
+                <Profile />
+                <Profile />
+                <Profile />
             </Row>
         </Container>
     );

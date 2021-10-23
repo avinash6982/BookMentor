@@ -51,9 +51,6 @@
     width: 100%;
     height: auto;
 }
-.column {
-    padding: 1em;
-}
 .profileName {
     font-size: 18px !important;
 }
@@ -71,6 +68,7 @@
 .profileContainer {
     text-align: left;
     padding: 1em;
+    margin: 1em;
 }
 .listParent {
     display: inline-block;
@@ -103,3 +101,14 @@
     }
 }
 
+/* footer */
+.footerContainer {
+    margin-top: 2em;
+    background-color: rgb(5, 5, 141);
+    color: white;
+    text-align: left;
+    padding: 3em;
+}
+.footerLogo {
+    font-size: 40px;
+}

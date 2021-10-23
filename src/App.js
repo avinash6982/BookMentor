@@ -9,7 +9,7 @@ import Home from './container/Home';
 
 function App() {
 
-  const [user, setUser] = useState("user")
+  const [user, setUser] = useState(null)
 
   return (
     <div className="App">
