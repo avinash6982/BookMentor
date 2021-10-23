@@ -7,9 +7,9 @@ const NavbarComponent = ({
 }) => {
 
     return (
-        <Navbar className={classes.navbar} collapseOnSelect expand="sm" bg="dark" variant="dark">
+        <Navbar className={classes.navigationBar} collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="#home">FastClass</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">

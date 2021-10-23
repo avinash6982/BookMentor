@@ -9,7 +9,7 @@ const SearchBar = () => {
     return (
         <Form.Group className={classes.inputContainer}>
             <FontAwesomeIcon
-                onClick={() => console.log("unda")}
+                onClick={() => console.log("search")}
                 title="search"
                 size="30"
                 color="rgba(44, 128, 255, 0.747)" />
@@ -24,11 +24,17 @@ const SearchBar = () => {
 const DropDown = () => {
 
     return (
-        <DropdownButton className={classes.select} id="dropdown-basic-button" title="Dropdown button">
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-        </DropdownButton>
+        <Dropdown align="end" className={classes.selectContainer}>
+            <Dropdown.Toggle className={classes.select} variant="primary" id="dropdown-basic">
+                Dropdown Button
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>
     );
 }
 

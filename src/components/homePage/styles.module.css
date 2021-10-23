@@ -7,7 +7,8 @@
         width: 70%;
     }
 }
-.inputContainer {
+.inputContainer,
+.selectContainer {
     position: relative;
     display: flex;
     align-items: center;
@@ -21,14 +22,28 @@
     border-radius: 22px;
     border: 1px solid rgb(0, 0, 83);
 }
-.select button {
+.searchBar::placeholder {
+    color: rgb(0, 0, 83);
+}
+.select {
     height: 45px;
     border-radius: 22px;
     border: 1px solid rgb(0, 0, 83);
-    background-color: white !important;
+    background-color: transparent !important;
     color: black !important;
-    width: 100%;
+    width: 100% !important;
+}
+.select {
+    color: rgb(0, 0, 83) !important;
+    text-align: left;
 }
 .text {
     padding: 0.6rem;
+}
+.select::after {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    color: rgba(44, 128, 255, 0.747);
+    width: 10px;
 }

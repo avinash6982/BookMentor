@@ -1,6 +1,5 @@
-.navbar {
+.navigationBar {
     background-color: rgb(5, 5, 141) !important;
-    height: 4em;
 }
 .navDropItem {
     color: black !important;

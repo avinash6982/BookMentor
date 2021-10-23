@@ -13,7 +13,8 @@ const FontAwesomeIcon = ({
         fontSize: size || "25",
         color: color,
         marginLeft: marginLeft,
-        marginRight: marginRight
+        marginRight: marginRight,
+        zIndex: 99
     }
 
     return <i
