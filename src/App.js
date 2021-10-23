@@ -9,14 +9,14 @@ import Home from './container/Home';
 
 function App() {
 
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState("user")
 
   return (
     <div className="App">
       {
         user ?
           <>
-            <Navbar setUser={setUser} user={user} />
+            <Navbar setUser={setUser} />
             <Home />
           </> :
           <LaunchPage setUser={setUser} />

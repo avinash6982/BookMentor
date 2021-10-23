@@ -1,24 +1,27 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
-import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 
 import classes from "./styles.module.css";
 
 const NavbarComponent = ({
-    onSignout,
-    auth,
+    onSignout
 }) => {
 
     return (
         <Navbar className={classes.navbar} expand="lg" variant="dark">
-            <Container className={classes.navbarContainer}>
-                <Navbar.Brand href="/">TuteNext</Navbar.Brand>
-                <Nav>
-                    {
-                        auth &&
-                        <Nav.Link onClick={() => onSignout()} href="">
-                            <FontAwesomeIcon title="sign-out" size={25} />
-                        </Nav.Link>
-                    }
+            <Container>
+                <Navbar.Brand href="/">
+                    <b>FastClass</b>
+                </Navbar.Brand>
+                <Nav className="me-right">
+                    <Nav.Link href="/contact-us">Contact us</Nav.Link>
+                    <Nav.Link href="/faq">FAQ</Nav.Link>
+                    <NavDropdown title="Account" id="basic-nav-dropdown">
+                        <NavDropdown.Item className={classes.navDropItem} href="/profile">Profile</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item onClick={() => onSignout()} className={classes.navDropItem} href="">
+                            Logout
+                        </NavDropdown.Item>
+                    </NavDropdown>
                 </Nav>
             </Container>
         </Navbar>

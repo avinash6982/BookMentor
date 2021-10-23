@@ -1,16 +1,13 @@
 import NavbarComponent from "../components/navbar";
 
 const Navbar = ({
-    setUser,
-    user
+    setUser
 }) => {
 
     const onSignout = () => setUser(null)
 
     return (
-        <NavbarComponent
-            onSignout={onSignout}
-            auth={user ? true : false} />
+        <NavbarComponent onSignout={onSignout} />
     )
 }
 
