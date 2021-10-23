@@ -3,7 +3,9 @@ const FontAwesomeIcon = ({
     size,
     color,
     marginLeft,
-    marginRight
+    marginRight,
+    onMouseEnter,
+    onMouseOut
 }) => {
 
     const styles = {
@@ -12,8 +14,14 @@ const FontAwesomeIcon = ({
         marginLeft: marginLeft,
         marginRight: marginRight
     }
-    
-    return <i className={`fa fa-${title}`} style={{ ...styles }} aria-hidden="true"></i>
+
+    return <i
+        onMouseEnter={onMouseEnter}
+        onMouseOut={onMouseOut}
+        className={`fa fa-${title}`}
+        style={{ ...styles }}
+        aria-hidden="true">
+    </i>
 }
 
 export default FontAwesomeIcon
