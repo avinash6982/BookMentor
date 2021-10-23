@@ -5,7 +5,8 @@ const FontAwesomeIcon = ({
     marginLeft,
     marginRight,
     onMouseEnter,
-    onMouseOut
+    onMouseOut,
+    onClick
 }) => {
 
     const styles = {
@@ -16,6 +17,7 @@ const FontAwesomeIcon = ({
     }
 
     return <i
+        onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseOut={onMouseOut}
         className={`fa fa-${title}`}

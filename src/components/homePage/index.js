@@ -1,12 +1,11 @@
 import React from "react";
+import SearchOptions from "./SearchOptions";
 
 const HomepageComponent = () => {
 
-    return (
-        <>
-            This is the homepage
-        </>
-    );
+    return (<>
+        <SearchOptions />
+    </>);
 }
 
 export default HomepageComponent
