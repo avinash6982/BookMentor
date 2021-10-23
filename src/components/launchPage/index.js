@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col } from "react-bootstrap";
 
 import FullSizeRow from "../../common/wrapper/FullSizeRow";
@@ -11,7 +11,7 @@ export default function LaunchPageComponent() {
 
     return (
         <FullSizeRow>
-            <Col lg={6} className={classes.columnCenter}>
+            <Col lg={6} className={`${classes.columnCenter} ${classes.columnRightBorder}`}>
                 <ContentWrapper show={true}>
                     <h1 className={classes.heading}>
                         FastClass
