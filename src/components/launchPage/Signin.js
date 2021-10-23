@@ -4,7 +4,7 @@ import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
 import classes from "./styles.module.css";
 
-export default function Signin() {
+export default function Signin({ onSignin }) {
 
     const [state, setState] = useState({
         username: "",
@@ -22,7 +22,7 @@ export default function Signin() {
 
     const signinHandler = () => {
 
-        console.log("signin")
+        onSignin({...state})
     }
 
     return (
@@ -54,10 +54,25 @@ export default function Signin() {
             </Form.Group>
 
             <div className={classes.signinContainer}>
-                <Button variant="primary" className={classes.signinButton} type="submit">
+                <Button variant="primary" onClick={() => signinHandler()} className={classes.signinButton}>
                     Login
                     <FontAwesomeIcon title="arrow-right" marginLeft="10px" />
                 </Button>
+            </div>
+
+            <div className={classes.signupContainer}>
+                <Button variant="primary" className={classes.signupButton}>
+                    Create an account
+                    <FontAwesomeIcon title="arrow-right" marginLeft="10px" />
+                </Button>
+            </div>
+
+            <div className={classes.signinOptions}>
+                <a href="/" className={classes.links}>Forgot password</a>
+                <a href="/" className={classes.links}>
+                    Help
+                    <FontAwesomeIcon title="question-circle" marginLeft="5px" />
+                </a>
             </div>
         </Form>
     );

@@ -7,7 +7,7 @@ import Signin from "./Signin";
 
 import classes from "./styles.module.css";
 
-export default function LaunchPageComponent() {
+export default function LaunchPageComponent({ onSignin }) {
 
     return (
         <FullSizeRow>
@@ -20,7 +20,7 @@ export default function LaunchPageComponent() {
             </Col>
             <Col lg={6} className={classes.columnCenter}>
                 <ContentWrapper show={true}>
-                    <Signin />
+                    <Signin onSignin={onSignin} />
                 </ContentWrapper>
             </Col>
         </FullSizeRow>

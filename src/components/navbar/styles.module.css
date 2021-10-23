@@ -1,0 +1,8 @@
+.navbar {
+    background-color: #4d4d4d;
+    height: 3em;
+    border-bottom: solid #f17634 2px;
+}
+.navbarContainer {
+    max-width: 100vw !important;
+}
