@@ -1,26 +1,22 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Routes';
 
-import LaunchPage from './container/LaunchPage';
 import Navbar from "./container/Navbar";
-import Home from './container/Home';
+import { useAuth } from './AuthContext';
 
 function App() {
 
-  const [user, setUser] = useState(null)
+  const auth = useAuth()
 
   return (
     <div className="App">
-      {
-        user ?
-          <>
-            <Navbar setUser={setUser} />
-            <Home />
-          </> :
-          <LaunchPage setUser={setUser} />
-      }
+      {auth.user && <Navbar />}
+      <Router>
+        <Routes />
+      </Router>
     </div>
   );
 }

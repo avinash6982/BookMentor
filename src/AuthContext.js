@@ -10,7 +10,7 @@ const AuthProvider = props => {
 
         let userDetails = JSON.parse(localStorage.getItem("fastClassUser"))
         if (userDetails !== user)
-            setUser({ userDetails })
+            setUser(userDetails)
     }, [])
 
     const signin = (user, cb) => {
