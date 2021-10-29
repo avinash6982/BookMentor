@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
 
 import Navbar from "./container/Navbar";
+import Footer from './container/Footer';
 import { useAuth } from './AuthContext';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Router>
         <Routes />
       </Router>
+      {auth.user && <Footer />}
     </div>
   );
 }

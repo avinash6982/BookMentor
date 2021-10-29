@@ -1,0 +1,10 @@
+.footerContainer {
+    margin-top: 2em;
+    background-color: #2a4f96;
+    color: white;
+    text-align: left;
+    padding: 3em;
+}
+.footerLogo {
+    font-size: 40px;
+}

@@ -4,25 +4,34 @@ const AuthContext = createContext()
 
 const AuthProvider = props => {
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({
+        info: null,
+        isLoading: true
+    })
+
+    const updateUser = user =>
+        setUser({
+            info: { ...user },
+            isLoading: false
+        })
 
     useEffect(() => {
 
         let userDetails = JSON.parse(localStorage.getItem("fastClassUser"))
-        if (userDetails !== user)
-            setUser(userDetails)
+        if (userDetails !== user.info)
+            updateUser(userDetails)
     }, [])
 
     const signin = (user, cb) => {
 
-        setUser(user)
+        updateUser(user)
         localStorage.setItem("fastClassUser", user)
         cb()
     };
 
     const signout = cb => {
 
-        setUser(null)
+        updateUser(null)
         localStorage.removeItem("fastClassUser")
         cb()
     };

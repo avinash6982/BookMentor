@@ -2,9 +2,11 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 import { useAuth } from "./AuthContext";
+import LoadingScreen from "./common/loading";
 
 export const ProtectedRoute = ({
     component: Component,
+    id,
     ...rest
 }) => {
 
@@ -14,8 +16,10 @@ export const ProtectedRoute = ({
         <Route
             {...rest}
             render={props => {
-                if (auth.user) {
-                    return <Component {...props} />;
+                if (auth.user.isLoading)
+                    return <LoadingScreen />
+                else if (auth.user) {
+                    return <Component id={id} {...props} />;
                 } else {
                     return (
                         <Redirect

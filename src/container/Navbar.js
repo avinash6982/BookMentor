@@ -6,7 +6,7 @@ const Navbar = () => {
     const auth = useAuth()
 
     const onSignout = () =>
-        auth.signout(() => console.log("signout success"))
+        auth.signout(() => console.log("logout success"))
 
     return (
         <NavbarComponent onSignout={onSignout} />

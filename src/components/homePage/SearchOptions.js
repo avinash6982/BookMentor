@@ -25,7 +25,7 @@ const DropDown = () => {
 
     return (
         <Dropdown align="end" className={classes.selectContainer}>
-            <Dropdown.Toggle className={classes.select} variant="primary" id="dropdown-basic">
+            <Dropdown.Toggle className={classes.select} variant="default" id="dropdown-basic">
                 Choose Category
             </Dropdown.Toggle>
 

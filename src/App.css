@@ -30,12 +30,12 @@
     background-color: #2a4f96 !important;
 }
 .btn-primary:hover {
-    background-color: #4525F2 !important;
+    background-color: #4525f2 !important;
 }
 .btn-default {
-    color: #2A4F96 !important;
+    color: #2a4f96 !important;
     background-color: white;
-    border-color: #699EEE !important;
+    border-color: #699eee !important;
 }
 .btn-default:hover {
     background-color: aliceblue !important;
@@ -46,5 +46,31 @@
     color: #2a4f96;
     font-weight: 500;
     font-size: 20px;
-    margin-bottom: 0px;
+}
+.textMedium {
+    color: #2a4f96;
+    font-weight: 500;
+    font-size: 16px;
+}
+.textSmall {
+    color: #2a4f96;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
