@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form, DropdownButton, Dropdown } from "react-bootstrap";
+import { Container, Row, Col, Form, Dropdown } from "react-bootstrap";
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
 import classes from "./styles.module.css"
@@ -12,7 +12,7 @@ const SearchBar = () => {
                 onClick={() => console.log("search")}
                 title="search"
                 size="30"
-                color="rgba(44, 128, 255, 0.747)" />
+                color="#2A4F96" />
             <Form.Control
                 className={classes.searchBar}
                 type="text"
@@ -26,7 +26,7 @@ const DropDown = () => {
     return (
         <Dropdown align="end" className={classes.selectContainer}>
             <Dropdown.Toggle className={classes.select} variant="primary" id="dropdown-basic">
-                Dropdown Button
+                Choose Category
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

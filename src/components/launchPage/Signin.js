@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import CustomButton from "../../common/buttons/CustomButton";
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
 import classes from "./styles.module.css";
@@ -22,7 +23,7 @@ export default function Signin({ onSignin }) {
 
     const signinHandler = () => {
 
-        onSignin({...state})
+        onSignin({ ...state })
     }
 
     return (
@@ -31,7 +32,7 @@ export default function Signin({ onSignin }) {
                 <FontAwesomeIcon
                     title="user"
                     size="30"
-                    color="rgba(44, 128, 255, 0.747)" />
+                    color="#699EEE" />
                 <Form.Control
                     onChange={e => updateState("username", e.target.value)}
                     className={classes.inputField}
@@ -43,7 +44,7 @@ export default function Signin({ onSignin }) {
                 <FontAwesomeIcon
                     title={passwordVisible ? "eye" : "eye-slash"}
                     size="30"
-                    color="rgba(44, 128, 255, 0.747)"
+                    color="#699EEE"
                     onMouseEnter={() => setPasswordVisible(true)}
                     onMouseOut={() => setPasswordVisible(false)} />
                 <Form.Control
@@ -54,24 +55,27 @@ export default function Signin({ onSignin }) {
             </Form.Group>
 
             <div className={classes.signinContainer}>
-                <Button variant="primary" onClick={() => signinHandler()} className={classes.signinButton}>
-                    Login
-                    <FontAwesomeIcon title="arrow-right" marginLeft="10px" />
-                </Button>
+                <CustomButton
+                    variant="primary"
+                    styles={{ float: "right" }}
+                    text="signin"
+                    icon="arrow-right"
+                    onClick={signinHandler} />
             </div>
 
             <div className={classes.signupContainer}>
-                <Button variant="primary" className={classes.signupButton}>
-                    Create an account
-                    <FontAwesomeIcon title="arrow-right" marginLeft="10px" />
-                </Button>
+                <CustomButton
+                    variant="default"
+                    styles={{ width: "100%" }}
+                    text="Create an account"
+                    onClick={signinHandler} />
             </div>
 
             <div className={classes.signinOptions}>
                 <a href="/" className={classes.links}>Forgot password</a>
                 <a href="/" className={classes.links}>
                     Help
-                    <FontAwesomeIcon title="question-circle" marginLeft="5px" />
+                    <FontAwesomeIcon color="#2A4F96" title="question-circle" marginLeft="5px" />
                 </a>
             </div>
         </Form>

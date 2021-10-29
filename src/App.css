@@ -24,3 +24,27 @@
 .row {
     --bs-gutter-x: 0 !important;
 }
+
+/* button styles */
+.btn-primary {
+    background-color: #2a4f96 !important;
+}
+.btn-primary:hover {
+    background-color: #4525F2 !important;
+}
+.btn-default {
+    color: #2A4F96 !important;
+    background-color: white;
+    border-color: #699EEE !important;
+}
+.btn-default:hover {
+    background-color: aliceblue !important;
+}
+
+/* text styles */
+.textLarge {
+    color: #2a4f96;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 0px;
+}

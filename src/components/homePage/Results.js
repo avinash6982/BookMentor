@@ -1,5 +1,7 @@
 import React from "react";
-import { Col, Container, Row, Card, Button } from "react-bootstrap";
+import { Col, Container, Row, Card } from "react-bootstrap";
+
+import CustomButton from "../../common/buttons/CustomButton";
 
 import classes from "./styles.module.css";
 
@@ -54,13 +56,17 @@ const Profile = () =>
                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                         </Card.Text>
                         <div className={classes.buttonContainer}>
-                            <Button className={classes.profileAction} variant="primary">Book</Button>
+                            <CustomButton
+                                variant="primary"
+                                text="Book"
+                                onClick={() => console.log("book")}
+                                styles={{ float: "right" }} />
                         </div>
                     </Card.Body>
                 </Col>
             </Row>
         </Card>
-    </Col>
+    </Col >
 
 const Results = () => {
 
@@ -69,7 +75,7 @@ const Results = () => {
             <Row>
                 {
                     Object.values(profiles)
-                        .map(item => <Profile />)
+                        .map(item => <Profile key={item} />)
                 }
                 <Profile />
                 <Profile />
