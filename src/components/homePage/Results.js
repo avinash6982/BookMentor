@@ -78,7 +78,7 @@ const Results = () => {
         </Col >
 
     return (
-        <Container fluid className={classes.container}>
+        <Container className={classes.resultsContainer}>
             <Row>
                 {
                     Object.values(profiles)

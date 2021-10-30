@@ -1,13 +1,17 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 import classes from "./styles.module.css";
 
 const BookingsComponent = () => {
 
     return (
-        <Container>
-            Bookings
+        <Container className={classes.container}>
+            <Row>
+                <p className="textLarge">
+                    Bookings
+                </p>
+            </Row>
         </Container>
     );
 }

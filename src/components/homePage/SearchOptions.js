@@ -41,7 +41,7 @@ const DropDown = () => {
 const SearchOptions = () => {
 
     return (
-        <Container className={classes.container}>
+        <Container className={classes.searchOptionsContainer}>
             <Row>
                 <Col md={5}>
                     <SearchBar />

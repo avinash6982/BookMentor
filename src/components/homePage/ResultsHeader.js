@@ -8,7 +8,7 @@ import classes from "./styles.module.css";
 const ResultsHeader = () => {
 
     return (
-        <Container className={classes.container} fluid>
+        <Container className={classes.resultsHeaderContainer} fluid>
             <Container>
                 <Row>
                     <Col className={classes.contentVerticalCenter}>
@@ -21,7 +21,7 @@ const ResultsHeader = () => {
                             variant="default"
                             text="Filter"
                             icon="filter"
-                            styles={{float: "right"}}
+                            styles={{ float: "right" }}
                             onClick={() => console.log("fitler button")}
                         />
                     </Col>

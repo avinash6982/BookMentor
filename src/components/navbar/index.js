@@ -18,7 +18,7 @@ const NavbarComponent = ({
                         <Nav.Link href="/contact-us">Contact us</Nav.Link>
                         <Nav.Link href="/faq">FAQ</Nav.Link>
                         <NavDropdown title="Account">
-                            <NavDropdown.Item className={classes.navDropItem} href="/profile">Profile</NavDropdown.Item>
+                            <NavDropdown.Item className={classes.navDropItem} href="/bookings">Bookings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={() => onSignout()} className={classes.navDropItem} href="">
                                 Logout
