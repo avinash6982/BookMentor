@@ -7,6 +7,7 @@ import {
 import LaunchPage from "./container/LaunchPage";
 import Home from "./container/Home";
 import Mentor from "./container/Mentor";
+import Bookings from "./container/Bookings";
 
 import { ProtectedRoute } from "./ProtectedRoute";
 
@@ -21,6 +22,7 @@ export default function Routes() {
 
     return (
         <Switch>
+            <ProtectedRoute exact path="/bookings" component={Bookings} />
             <ProtectedRoute exact path="/mentor" component={Mentor} id={query.get("id")} />
             <ProtectedRoute exact path="/" component={Home} />
             <Route path="/welcome" component={LaunchPage} />

@@ -14,10 +14,12 @@ function App() {
 
   return (
     <div className="App">
-      {auth.user && <Navbar />}
-      <Router>
-        <Routes />
-      </Router>
+      <div className="AppContents">
+        {auth.user && <Navbar />}
+        <Router>
+          <Routes />
+        </Router>
+      </div>
       {auth.user && <Footer />}
     </div>
   );

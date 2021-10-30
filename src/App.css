@@ -1,8 +1,12 @@
 .App {
     text-align: center;
-    height: 100vh !important;
+    min-height: 100vh !important;
     width: 100vw !important;
     overflow-x: hidden;
+    position: relative;
+}
+.AppContents {
+    padding-bottom: 10rem;
 }
 @keyframes fadeIn {
     0% {
