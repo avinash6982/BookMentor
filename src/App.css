@@ -1,3 +1,82 @@
 .App {
-  text-align: center;
+    text-align: center;
+    min-height: 100vh !important;
+    width: 100vw !important;
+    overflow-x: hidden;
+    position: relative;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+/* button styles */
+.btn-primary {
+    background-color: #2a4f96 !important;
+}
+.btn-primary:hover {
+    background-color: #4525f2 !important;
+}
+.btn-default {
+    color: #2a4f96 !important;
+    background-color: white;
+    border-color: #699eee !important;
+}
+.btn-default:hover {
+    background-color: aliceblue !important;
+}
+
+/* text styles */
+.textLarge {
+    color: #2a4f96;
+    font-weight: 500;
+    font-size: 20px;
+}
+.textMedium {
+    color: #2a4f96;
+    font-weight: 500;
+    font-size: 16px;
+}
+.textSmall {
+    color: #2a4f96;
+    font-weight: 500;
+    font-size: 12px;
+}
+.textXSmall {
+    color: #2a4f96;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
