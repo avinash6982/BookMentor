@@ -11,7 +11,7 @@ const AuthProvider = props => {
 
     const updateUser = user =>
         setUser({
-            info: { ...user },
+            info: user,
             isLoading: false
         })
 

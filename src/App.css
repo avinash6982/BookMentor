@@ -5,9 +5,6 @@
     overflow-x: hidden;
     position: relative;
 }
-.AppContents {
-    padding-bottom: 10rem;
-}
 @keyframes fadeIn {
     0% {
         opacity: 0;

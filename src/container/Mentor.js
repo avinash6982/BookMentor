@@ -1,6 +1,7 @@
 import React from "react";
+
 import MentorComponent from "../components/mentor";
-import ContentWrapper from "../common/wrapper/ContentWrapper";
+import LayoutWrapper from "../common/wrapper/LayoutWrapper";
 
 export default function Mentor({ id }) {
 
@@ -10,8 +11,8 @@ export default function Mentor({ id }) {
         console.log("no id found")
 
     return (
-        <ContentWrapper>
+        <LayoutWrapper>
             <MentorComponent />
-        </ContentWrapper>
+        </LayoutWrapper>
     );
 }

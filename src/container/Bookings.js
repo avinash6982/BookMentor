@@ -1,13 +1,13 @@
 import React from "react";
 
-import ContentWrapper from "../common/wrapper/ContentWrapper";
+import LayoutWrapper from "../common/wrapper/LayoutWrapper";
 import BookingsComponent from "../components/bookings";
 
 export default function Bookings() {
 
     return (
-        <ContentWrapper>
+        <LayoutWrapper>
             <BookingsComponent />
-        </ContentWrapper>
+        </LayoutWrapper>
     );
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import ContentWrapper from "../../common/wrapper/ContentWrapper";
+
+import TransitionWrapper from "../../common/wrapper/TransitionWrapper";
 import Results from "./Results";
 import SearchOptions from "./SearchOptions";
 import ResultsHeader from "./ResultsHeader";
@@ -7,11 +8,11 @@ import ResultsHeader from "./ResultsHeader";
 const HomepageComponent = () => {
 
     return (
-        <ContentWrapper>
+        <TransitionWrapper>
             <SearchOptions />
             <ResultsHeader />
             <Results />
-        </ContentWrapper>
+        </TransitionWrapper>
     );
 }
 

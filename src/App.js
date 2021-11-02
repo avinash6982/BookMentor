@@ -12,15 +12,14 @@ function App() {
 
   const auth = useAuth()
 
+  console.log(auth.user.info)
   return (
     <div className="App">
-      <div className="AppContents">
-        {auth.user && <Navbar />}
-        <Router>
-          <Routes />
-        </Router>
-      </div>
-      {auth.user && <Footer />}
+      {auth.user.info && <Navbar />}
+      <Router>
+        <Routes />
+      </Router>
+      {auth.user.info && <Footer />}
     </div>
   );
 }

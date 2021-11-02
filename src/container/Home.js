@@ -1,13 +1,14 @@
 import React from "react";
-import ContentWrapper from "../common/wrapper/ContentWrapper";
+
+import LayoutWrapper from "../common/wrapper/LayoutWrapper";
 import HomepageComponent from "../components/homePage";
 
 const Home = () => {
 
     return (
-        <ContentWrapper>
+        <LayoutWrapper>
             <HomepageComponent />
-        </ContentWrapper>
+        </LayoutWrapper>
     );
 }
 

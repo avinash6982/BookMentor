@@ -8,7 +8,7 @@ const Navbar = () => {
     const history = useHistory()
 
     const onSignout = () =>
-        auth.signout(() => console.log("unda"))
+        auth.signout(() => console.log("signout"))
 
     return (
         <NavbarComponent onSignout={onSignout} />

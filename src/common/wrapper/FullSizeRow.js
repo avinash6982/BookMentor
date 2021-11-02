@@ -3,7 +3,7 @@ import { Row } from "react-bootstrap";
 
 import classes from "./styles.module.css";
 
-export default function FullSizeRow(props) {
+const FullSizeRow = props => {
 
     return (
         <div className={classes.heightReducedContainer}>
@@ -13,3 +13,5 @@ export default function FullSizeRow(props) {
         </div>
     );
 }
+
+export default FullSizeRow
