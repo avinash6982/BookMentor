@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Collapse, Form, } from "react-bootstrap";
 import CustomButton from "../../common/buttons/CustomButton";
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
-import { confirmPasswordValidator, emailValidator, firstNameValidator, passwordValidator } from "../../services/validators/FormValidator";
+import { confirmPasswordValidator, emailValidator, fullNameValidator, passwordValidator } from "../../services/validators/FormValidator";
 
 import classes from "./styles.module.css";
 
 const Signup = ({
     onSignup,
-    setPage
+    setPage,
+    signupErr
 }) => {
 
     const [state, setState] = useState({
-        firstName: "",
+        fullName: "",
         email: "",
         password: "",
         confirmPassword: ""
@@ -28,25 +29,27 @@ const Signup = ({
     const [passwordVisible, setPasswordVisible] = useState(false)
 
     const [errorMessages, setErrorMessages] = useState({
-        showFirstNameError: false,
+        showFullNameError: false,
         showEmailError: false,
         showPasswordError: false,
         showConfirmPasswordError: false
     })
 
+    const [signupError, setSignupError] = useState(false)
+
     const signupHandler = () =>
         (Object.values(state).every(item => item !== "") &&
             Object.values(errorMessages).every(item => item === false)) ?
             onSignup({
-                firstName: state.firstName,
+                fullName: state.fullName,
                 email: state.email,
                 password: state.password
             }) :
-            alert("All fields are mandatory, please check your entry")
+            setSignupError(true)
 
     useEffect(() => {
         setErrorMessages({
-            showFirstNameError: state.firstName !== "" ? !firstNameValidator(state.firstName) : false,
+            showFullNameError: state.fullName !== "" ? !fullNameValidator(state.fullName) : false,
             showEmailError: state.email !== "" ? !emailValidator(state.email) : false,
             showPasswordError: state.password !== "" ? !passwordValidator(state.password) : false,
             showConfirmPasswordError: state.confirmPassword !== "" ? !confirmPasswordValidator(state.password, state.confirmPassword) : false
@@ -61,12 +64,12 @@ const Signup = ({
                     size="30"
                     color="#699EEE" />
                 <Form.Control
-                    onChange={e => updateState("firstName", e.target.value)}
+                    onChange={e => updateState("fullName", e.target.value)}
                     className={classes.inputField}
                     type="text"
-                    placeholder="Firstname" />
+                    placeholder="FullName" />
             </Form.Group>
-            <Collapse in={errorMessages.showFirstNameError}>
+            <Collapse in={errorMessages.showFullNameError}>
                 <div className={classes.errorMessages}>
                     Please input a valid name
                 </div>
@@ -124,6 +127,11 @@ const Signup = ({
             <Collapse in={errorMessages.showConfirmPasswordError}>
                 <div className={classes.errorMessages} title="passwords must be same">
                     Passwords doesnot match
+                </div>
+            </Collapse>
+            <Collapse in={signupErr || signupError}>
+                <div className={classes.errorMessages}>
+                    Please fill in all fields
                 </div>
             </Collapse>
 

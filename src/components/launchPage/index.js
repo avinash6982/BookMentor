@@ -11,7 +11,8 @@ const LaunchPageComponent = ({
     page,
     setPage,
     onSignin,
-    onSignup
+    onSignup,
+    errMessages
 }) => {
 
     return (
@@ -28,8 +29,14 @@ const LaunchPageComponent = ({
                     <TransitionWrapper show={true}>
                         {
                             page === "signin" ?
-                                <Signin onSignin={onSignin} setPage={setPage} /> :
-                                <Signup onSignup={onSignup} setPage={setPage} />
+                                <Signin
+                                    onSignin={onSignin}
+                                    setPage={setPage}
+                                    signinErr={errMessages.showSigninError} /> :
+                                <Signup
+                                    onSignup={onSignup}
+                                    setPage={setPage}
+                                    signupErr={errMessages.showSignupError} />
                         }
                     </TransitionWrapper>
                 </Col>

@@ -27,7 +27,7 @@ const AuthProvider = props => {
     const signin = (user, cb) => {
 
         updateUser(user)
-        localStorage.setItem("fastClassUser", user)
+        localStorage.setItem("fastClassUser", JSON.stringify(user))
         cb()
     };
 

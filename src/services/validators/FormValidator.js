@@ -1,4 +1,4 @@
-export const firstNameValidator = name =>
+export const fullNameValidator = name =>
     /^[A-Za-z]+$/.test(name) && 20 > name.length
 
 export const emailValidator = email =>

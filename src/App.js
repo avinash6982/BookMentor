@@ -12,7 +12,6 @@ function App() {
 
   const auth = useAuth()
 
-  console.log(auth.user.info)
   return (
     <div className="App">
       {auth.user.info && <Navbar />}

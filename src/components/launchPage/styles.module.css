@@ -24,9 +24,10 @@
 }
 .signinContainer,
 .signupContainer {
+    margin-top: 0.5rem;
     width: 100%;
     height: 45px;
-    margin-bottom: 1em !important;
+    margin-bottom: 1rem !important;
 }
 .inputContainer {
     padding-bottom: 0.5em;
