@@ -1,13 +1,18 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 
-import FullSizeRow from "../../common/wrapper/FullSizeRow";
 import TransitionWrapper from "../../common/wrapper/TransitionWrapper";
 import Signin from "./Signin";
+import Signup from "./Signup";
 
 import classes from "./styles.module.css";
 
-export default function LaunchPageComponent({ onSignin }) {
+const LaunchPageComponent = ({
+    page,
+    setPage,
+    onSignin,
+    onSignup
+}) => {
 
     return (
         <div className={classes.launchPageWrapper}>
@@ -21,10 +26,16 @@ export default function LaunchPageComponent({ onSignin }) {
                 </Col>
                 <Col lg={6} className={classes.columnCenter}>
                     <TransitionWrapper show={true}>
-                        <Signin onSignin={onSignin} />
+                        {
+                            page === "signin" ?
+                                <Signin onSignin={onSignin} setPage={setPage} /> :
+                                <Signup onSignup={onSignup} setPage={setPage} />
+                        }
                     </TransitionWrapper>
                 </Col>
             </Row>
         </div>
     );
 }
+
+export default LaunchPageComponent

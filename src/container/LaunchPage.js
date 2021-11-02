@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Redirect, useHistory, useLocation } from "react-router";
 import { useAuth } from "../AuthContext";
 
@@ -10,6 +10,7 @@ export default function LaunchPage() {
     let history = useHistory()
     let location = useLocation()
     let { from } = location.state || { from: { pathname: "/" } };
+    const [page, setPage] = useState("signin")
     if (auth.user.info)
         return <Redirect to={{ pathname: from.pathname }} />
 
@@ -28,7 +29,14 @@ export default function LaunchPage() {
             ) :
             console.log("login failed")
 
+    const onSignup = data =>
+        console.log(data)
+
     return (
-        <LaunchPageComponent onSignin={onSignin} />
+        <LaunchPageComponent
+            page={page}
+            setPage={setPage}
+            onSignin={onSignin}
+            onSignup={onSignup} />
     );
 }

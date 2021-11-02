@@ -1,0 +1,150 @@
+import React, { useEffect, useState } from "react";
+import { Collapse, Form, } from "react-bootstrap";
+import CustomButton from "../../common/buttons/CustomButton";
+import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
+import { confirmPasswordValidator, emailValidator, firstNameValidator, passwordValidator } from "../../services/validators/FormValidator";
+
+import classes from "./styles.module.css";
+
+const Signup = ({
+    onSignup,
+    setPage
+}) => {
+
+    const [state, setState] = useState({
+        firstName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    })
+
+    //function to safe update component state
+    const updateState = (label, data) =>
+        setState(previousState => ({
+            ...previousState,
+            [label]: data
+        }))
+
+    const [passwordVisible, setPasswordVisible] = useState(false)
+
+    const [errorMessages, setErrorMessages] = useState({
+        showFirstNameError: false,
+        showEmailError: false,
+        showPasswordError: false,
+        showConfirmPasswordError: false
+    })
+
+    const signupHandler = () =>
+        (Object.values(state).every(item => item !== "") &&
+            Object.values(errorMessages).every(item => item === false)) ?
+            onSignup({
+                firstName: state.firstName,
+                email: state.email,
+                password: state.password
+            }) :
+            alert("All fields are mandatory, please check your entry")
+
+    useEffect(() => {
+        setErrorMessages({
+            showFirstNameError: state.firstName !== "" ? !firstNameValidator(state.firstName) : false,
+            showEmailError: state.email !== "" ? !emailValidator(state.email) : false,
+            showPasswordError: state.password !== "" ? !passwordValidator(state.password) : false,
+            showConfirmPasswordError: state.confirmPassword !== "" ? !confirmPasswordValidator(state.password, state.confirmPassword) : false
+        })
+    }, [state])
+
+    return (
+        <Form>
+            <Form.Group className={classes.inputContainer}>
+                <FontAwesomeIcon
+                    title="user"
+                    size="30"
+                    color="#699EEE" />
+                <Form.Control
+                    onChange={e => updateState("firstName", e.target.value)}
+                    className={classes.inputField}
+                    type="text"
+                    placeholder="Firstname" />
+            </Form.Group>
+            <Collapse in={errorMessages.showFirstNameError}>
+                <div className={classes.errorMessages}>
+                    Please input a valid name
+                </div>
+            </Collapse>
+
+            <Form.Group className={classes.inputContainer}>
+                <FontAwesomeIcon
+                    title="envelope"
+                    size="30"
+                    color="#699EEE" />
+                <Form.Control
+                    onChange={e => updateState("email", e.target.value)}
+                    className={classes.inputField}
+                    type="email"
+                    placeholder="Email" />
+            </Form.Group>
+            <Collapse in={errorMessages.showEmailError}>
+                <div className={classes.errorMessages}>
+                    Please input a valid email id
+                </div>
+            </Collapse>
+
+            <Form.Group className={classes.inputContainer}>
+                <FontAwesomeIcon
+                    title={passwordVisible ? "eye" : "eye-slash"}
+                    size="30"
+                    color="#699EEE"
+                    onMouseEnter={() => setPasswordVisible(true)}
+                    onMouseOut={() => setPasswordVisible(false)} />
+                <Form.Control
+                    onChange={e => updateState("password", e.target.value)}
+                    className={classes.inputField}
+                    type={passwordVisible ? "text" : "password"}
+                    placeholder="Password" />
+            </Form.Group>
+            <Collapse in={errorMessages.showPasswordError}>
+                <div className={classes.errorMessages} title="password must contain atleast one digit, one special character and must be of 8 character length">
+                    Please input a valid password
+                </div>
+            </Collapse>
+
+            <Form.Group className={classes.inputContainer}>
+                <FontAwesomeIcon
+                    title={passwordVisible ? "eye" : "eye-slash"}
+                    size="30"
+                    color="#699EEE"
+                    onMouseEnter={() => setPasswordVisible(true)}
+                    onMouseOut={() => setPasswordVisible(false)} />
+                <Form.Control
+                    onChange={e => updateState("confirmPassword", e.target.value)}
+                    className={classes.inputField}
+                    type={passwordVisible ? "text" : "password"}
+                    placeholder="Confirm password" />
+            </Form.Group>
+            <Collapse in={errorMessages.showConfirmPasswordError}>
+                <div className={classes.errorMessages} title="passwords must be same">
+                    Passwords doesnot match
+                </div>
+            </Collapse>
+
+            <div className={classes.signinContainer}>
+                <CustomButton
+                    variant="primary"
+                    styles={{ float: "right" }}
+                    text="signup"
+                    icon="arrow-right"
+                    onClick={signupHandler} />
+            </div>
+
+            <div className={classes.signupContainer}>
+                <CustomButton
+                    variant="default"
+                    styles={{ width: "100%" }}
+                    text="Signin"
+                    onClick={() => setPage("signin")} />
+            </div>
+        </Form>
+    );
+}
+
+export default Signup

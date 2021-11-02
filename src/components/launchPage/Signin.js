@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, } from "react-bootstrap";
 import CustomButton from "../../common/buttons/CustomButton";
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
 import classes from "./styles.module.css";
 
-export default function Signin({ onSignin }) {
+const Signin = ({
+    onSignin,
+    setPage
+}) => {
 
     const [state, setState] = useState({
         username: "",
@@ -68,7 +71,7 @@ export default function Signin({ onSignin }) {
                     variant="default"
                     styles={{ width: "100%" }}
                     text="Create an account"
-                    onClick={signinHandler} />
+                    onClick={() => setPage("signup")} />
             </div>
 
             <div className={classes.signinOptions}>
@@ -81,3 +84,5 @@ export default function Signin({ onSignin }) {
         </Form>
     );
 }
+
+export default Signin

@@ -29,6 +29,8 @@
     margin-bottom: 1em !important;
 }
 .inputContainer {
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
     position: relative;
     display: flex;
     align-items: center;
@@ -54,4 +56,12 @@
 }
 .links {
     color: #707070;
+}
+
+/* errormessages */
+.errorMessages {
+    text-align: left;
+    color: red;
+    font-size: 14px;
+    padding-left: 1em;
 }
