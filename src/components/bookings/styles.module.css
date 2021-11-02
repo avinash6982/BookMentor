@@ -1,2 +1,43 @@
 .container {
+    padding-top: 2em;
+}
+.headingContainer {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.headingText {
+    text-align: left;
+}
+.profileContainer {
+    text-align: left;
+    padding: 1em;
+    margin: 1em;
+    position: relative;
+}
+.externalLink {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1rem;
+}
+.profileImage {
+    width: 100%;
+    height: auto;
+}
+.listParent {
+    display: inline-block;
+    list-style-type: none;
+    overflow: hidden;
+    padding-inline-start: 0px !important;
+}
+.listParent li {
+    width: 50%;
+    float: left;
+}
+.profileDesc {
+    font-weight: 500;
+    font-size: 14px;
+}
+.buttonContainer {
+    position: relative;
 }

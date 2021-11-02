@@ -20,6 +20,8 @@ const AuthProvider = props => {
         let userDetails = JSON.parse(localStorage.getItem("fastClassUser"))
         if (userDetails !== user.info)
             updateUser(userDetails)
+        else
+            updateUser(null)
     }, [])
 
     const signin = (user, cb) => {

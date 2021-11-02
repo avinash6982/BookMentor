@@ -6,7 +6,8 @@ const FontAwesomeIcon = ({
     marginRight,
     onMouseEnter,
     onMouseOut,
-    onClick
+    onClick,
+    tooltip
 }) => {
 
     const styles = {
@@ -23,6 +24,7 @@ const FontAwesomeIcon = ({
         onMouseOut={onMouseOut}
         className={`fa fa-${title}`}
         style={{ ...styles }}
+        title={tooltip}
         aria-hidden="true">
     </i>
 }

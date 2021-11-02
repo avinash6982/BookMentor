@@ -18,7 +18,7 @@ export const ProtectedRoute = ({
             render={props => {
                 if (auth.user.isLoading)
                     return <LoadingScreen />
-                else if (auth.user) {
+                else if (auth.user.info) {
                     return <Component id={id} {...props} />;
                 } else {
                     return (

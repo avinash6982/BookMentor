@@ -10,7 +10,7 @@ export default function LaunchPage() {
     let history = useHistory()
     let location = useLocation()
     let { from } = location.state || { from: { pathname: "/" } };
-    if (auth.user)
+    if (auth.user.info)
         return <Redirect to={{ pathname: from.pathname }} />
 
     const credentials = {
