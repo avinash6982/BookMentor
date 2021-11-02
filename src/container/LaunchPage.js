@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect, useHistory, useLocation } from "react-router";
+import { registerUser } from "../api/Signup";
 import { useAuth } from "../AuthContext";
 
 import LaunchPageComponent from "../components/launchPage";
@@ -30,7 +31,9 @@ export default function LaunchPage() {
             console.log("login failed")
 
     const onSignup = data =>
-        console.log(data)
+        registerUser(data)
+            .then(res => console.log(res))
+            .catch(err => console.log(err.response))
 
     return (
         <LaunchPageComponent
