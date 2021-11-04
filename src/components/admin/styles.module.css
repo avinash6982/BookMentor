@@ -1,0 +1,49 @@
+.resultsHeaderContainer {
+    padding-top: 2em;
+    width: 80%;
+}
+
+.contentVerticalCenter {
+    display: flex;
+    align-items: center;
+}
+
+.inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputContainer i {
+    position: absolute;
+    right: 1em;
+}
+
+.profileContainer {
+    text-align: left;
+    padding: 1em;
+    margin: 1em;
+}
+
+.searchBar {
+    height: 45px;
+    border-radius: 22px;
+    border: 1px solid #707070;
+}
+
+.searchBar::placeholder {
+    color: #2a4f96;
+}
+
+.profileImage {
+    width: 100%;
+    height: auto;
+}
+
+.profileName {
+    font-size: 18px !important;
+}
+
+.points {
+    font-size: 10px !important;
+}
