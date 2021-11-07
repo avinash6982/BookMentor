@@ -7,3 +7,6 @@ export const getMentors = () =>
 
 export const getCategories = () =>
     axios.get(API_URL + 'api/categories', { withCredentials: true })
+
+export const postMentor = data =>
+    axios.post(API_URL + 'api/mentors', data, { withCredentials: true })

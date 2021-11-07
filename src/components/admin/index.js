@@ -6,7 +6,9 @@ import Results from "./Results";
 import ResultsHeader from "./ResultsHeader";
 
 const AdminComponent = ({
-    mentors
+    addUser,
+    mentors,
+    categories
 }) => {
 
     const [addMentorVisible, setAddMentorVisible] = useState(false)
@@ -14,6 +16,8 @@ const AdminComponent = ({
     return (
         <TransitionWrapper>
             <AddMentor
+                addUser={addUser}
+                categories={categories}
                 show={addMentorVisible}
                 handleClose={() => setAddMentorVisible(false)} />
             <ResultsHeader
