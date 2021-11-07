@@ -19,9 +19,7 @@ const Results = () => {
                 <Row>
                     <Card.Body>
                         <Card.Title onClick={() => history.push("/mentor?id=22")} className={classes.profileName}>
-                            {/* <Link to="/mentor?id=22"> */}
                             Rajesh Moorthy
-                            {/* </Link> */}
                         </Card.Title>
                         <Card.Text className={classes.points}>
                             Front-end developer: 7 years

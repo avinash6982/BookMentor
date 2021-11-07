@@ -31,11 +31,10 @@ const AuthProvider = props => {
         cb()
     };
 
-    const signout = cb => {
+    const signout = () => {
 
         updateUser(null)
         localStorage.removeItem("fastClassUser")
-        cb()
     };
 
     const authContextValue = {

@@ -9,7 +9,7 @@ import classes from "./styles.module.css";
 const Signup = ({
     onSignup,
     setPage,
-    signupErr
+    errMessages
 }) => {
 
     const [state, setState] = useState({
@@ -35,17 +35,16 @@ const Signup = ({
         showConfirmPasswordError: false
     })
 
-    const [signupError, setSignupError] = useState(false)
+    const [formCompleted, setFormCompleted] = useState(false)
 
     const signupHandler = () =>
-        (Object.values(state).every(item => item !== "") &&
-            Object.values(errorMessages).every(item => item === false)) ?
-            onSignup({
-                fullName: state.fullName,
-                email: state.email,
-                password: state.password
-            }) :
-            setSignupError(true)
+        (formCompleted &&
+            Object.values(errorMessages).every(item => item === false)) &&
+        onSignup({
+            fullName: state.fullName,
+            email: state.email,
+            password: state.password
+        })
 
     useEffect(() => {
         setErrorMessages({
@@ -54,6 +53,7 @@ const Signup = ({
             showPasswordError: state.password !== "" ? !passwordValidator(state.password) : false,
             showConfirmPasswordError: state.confirmPassword !== "" ? !confirmPasswordValidator(state.password, state.confirmPassword) : false
         })
+        Object.values(state).every(item => item !== "") ? setFormCompleted(true) : setFormCompleted(false)
     }, [state])
 
     return (
@@ -129,9 +129,19 @@ const Signup = ({
                     Passwords doesnot match
                 </div>
             </Collapse>
-            <Collapse in={signupErr || signupError}>
+            <Collapse in={!formCompleted}>
                 <div className={classes.errorMessages}>
                     Please fill in all fields
+                </div>
+            </Collapse>
+            <Collapse in={errMessages.showSignupErr}>
+                <div className={classes.errorMessages}>
+                    Something went wrong, try again later
+                </div>
+            </Collapse>
+            <Collapse in={errMessages.showEmailError}>
+                <div className={classes.errorMessages}>
+                    Email already in use
                 </div>
             </Collapse>
 

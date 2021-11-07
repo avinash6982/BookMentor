@@ -32,11 +32,11 @@ const LaunchPageComponent = ({
                                 <Signin
                                     onSignin={onSignin}
                                     setPage={setPage}
-                                    signinErr={errMessages.showSigninError} /> :
+                                    errMessages={errMessages} /> :
                                 <Signup
                                     onSignup={onSignup}
                                     setPage={setPage}
-                                    signupErr={errMessages.showSignupError} />
+                                    errMessages={errMessages} />
                         }
                     </TransitionWrapper>
                 </Col>
