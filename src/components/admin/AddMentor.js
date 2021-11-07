@@ -7,7 +7,6 @@ import classes from "./styles.module.css";
 const AddMentorForm = ({
     state,
     updateState,
-    addDescription,
     categories
 }) =>
     <Form>
@@ -17,8 +16,8 @@ const AddMentorForm = ({
             </Form.Label>
             <Col sm="8">
                 <Form.Control
-                    value={state.mentorName}
-                    onChange={e => updateState("mentorName", e.target.value)}
+                    value={state.name}
+                    onChange={e => updateState("name", e.target.value)}
                     className={classes.inputField}
                     type="text"
                     placeholder="Name" />
@@ -27,14 +26,32 @@ const AddMentorForm = ({
 
         <Form.Group as={Row} className="mb-3">
             <Form.Label column sm="4">
-                Image :
+                Category :
+            </Form.Label>
+            <Col sm="8" >
+                <Form.Select
+                    onChange={e => updateState("category", e.target.value)}
+                    className={classes.inputField}>
+                    <option>Select</option>
+                    {
+                        Object.values(categories)
+                            .map(item => <option value={item._id} key={item._id}>{item.name}</option>)
+                    }
+                </Form.Select>
+            </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+            <Form.Label column sm="4">
+                Course name :
             </Form.Label>
             <Col sm="8">
                 <Form.Control
-                    onChange={e => updateState("image", e.target.value)}
+                    value={state.course}
+                    onChange={e => updateState("course", e.target.value)}
                     className={classes.inputField}
-                    type="file"
-                    placeholder="Name" />
+                    type="text"
+                    placeholder="Course name" />
             </Col>
         </Form.Group>
 
@@ -54,82 +71,11 @@ const AddMentorForm = ({
 
         <Form.Group as={Row} className="mb-3">
             <Form.Label column sm="4">
-                Course type :
-            </Form.Label>
-            <Col sm="8" >
-                <Form.Select
-                    onChange={e => updateState("courseType", e.target.value)}
-                    className={classes.inputField}>
-                    <option>Select</option>
-                    {
-                        Object.values(categories)
-                            .map(item => <option value={item._id} key={item._id}>{item.name}</option>)
-                    }
-                </Form.Select>
-            </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3">
-            <Form.Label column sm="4">
-                Course name :
+                Short Description :
             </Form.Label>
             <Col sm="8">
                 <Form.Control
-                    value={state.courseName}
-                    onChange={e => updateState("courseName", e.target.value)}
-                    className={classes.inputField}
-                    type="text"
-                    placeholder="Course name" />
-            </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3">
-            <Form.Label column sm="4">
-                Mentor id :
-            </Form.Label>
-            <Col sm="8">
-                <Form.Control
-                    onChange={e => updateState("mentorId", e.target.value)}
-                    className={classes.inputField}
-                    type="text"
-                    placeholder="Mentor id" />
-            </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3">
-            <Form.Label column sm="4">
-                Rating :
-            </Form.Label>
-            <Col sm="8">
-                <Form.Range
-                    defaultValue="0"
-                    min="0"
-                    max="5"
-                    step="1"
-                    onChange={e => updateState("rating", e.target.value)} />
-            </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3">
-            <Form.Label column sm="4">
-                Number of classes :
-            </Form.Label>
-            <Col sm="8">
-                <Form.Control
-                    onChange={e => updateState("numberOfClasses", e.target.value)}
-                    className={classes.inputField}
-                    type="number"
-                    placeholder="Number of classes" />
-            </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3">
-            <Form.Label column sm="4">
-                Intro :
-            </Form.Label>
-            <Col sm="8">
-                <Form.Control
-                    onChange={e => updateState("descriptionShort", e.target.value)}
+                    onChange={e => updateState("shortDescription", e.target.value)}
                     className={classes.inputField}
                     type="text"
                     placeholder="Description" />
@@ -138,14 +84,26 @@ const AddMentorForm = ({
 
         <Form.Group as={Row} className="mb-3">
             <Form.Label column sm="4">
-                Descriptions :
+                Long Description :
             </Form.Label>
             <Col sm="8">
                 <Form.Control
-                    onChange={e => addDescription(e.target.value)}
+                    onChange={e => updateState("longDescription", e.target.value)}
                     className={classes.inputField}
                     type="text"
                     placeholder="Description" />
+            </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+            <Form.Label column sm="4">
+                Image :
+            </Form.Label>
+            <Col sm="8">
+                <Form.Control
+                    onChange={e => updateState("pic", e.target.files[0])}
+                    className={classes.inputField}
+                    type="file" />
             </Col>
         </Form.Group>
     </Form>
@@ -158,16 +116,13 @@ const AddMentor = ({
 }) => {
 
     const [state, setState] = useState({
-        mentorName: "",
-        image: "",
+        name: "",
+        category: "",
+        course: "",
         role: "",
-        courseType: "",
-        courseName: "",
-        mentorId: 0,
-        rating: 0,
-        numberOfClasses: 0,
-        descriptionShort: "",
-        descriptionLong: []
+        shortDescription: "",
+        longDescription: "",
+        pic: ""
     })
 
     const updateState = (label, value) =>
@@ -177,18 +132,11 @@ const AddMentor = ({
 
         }))
 
-    const addDescription = value =>
-        setState(previousState => ({
-            ...previousState,
-            descriptionLong: [value]
-        }))
-
     const onSubmit = () => {
 
         addUser(state)
-            // .then(res => console.log(res))
-            // .catch(err => console.log(err))
-        handleClose()
+            .then(res => console.log(res))
+            .catch(err => console.log(err.response))
     }
 
     return (
@@ -200,7 +148,6 @@ const AddMentor = ({
                 <AddMentorForm
                     state={state}
                     updateState={updateState}
-                    addDescription={addDescription}
                     categories={categories} />
             </Modal.Body>
             <Modal.Footer>

@@ -19,7 +19,17 @@ const Admin = () => {
             .then(res => setCategories({ ...res.data.data }))
             .catch(err => console.log(err))
 
-    const addUser = data => console.log(data)
+    const addUser = data => {
+
+        let imageFile = new FormData()
+        imageFile.append("pic", data.pic)
+        let postData = {
+            ...data,
+            ...imageFile
+        }
+        console.log(postData)
+        return postMentor(postData)
+    }
 
     useEffect(() => {
         fetchMentors()
