@@ -23,7 +23,9 @@ const SearchBar = () => {
     );
 }
 
-const ResultsHeader = () => {
+const ResultsHeader = ({
+    setAddMentorVisible
+}) => {
 
     return (
         <Container className={classes.resultsHeaderContainer} fluid>
@@ -45,7 +47,7 @@ const ResultsHeader = () => {
                             text="Add"
                             icon="plus"
                             styles={{ float: "right" }}
-                            onClick={() => console.log("Add mentor")} />
+                            onClick={() => setAddMentorVisible(true)} />
                     </Col>
                 </Row>
             </Container>

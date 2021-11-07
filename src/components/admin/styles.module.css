@@ -47,3 +47,7 @@
 .points {
     font-size: 10px !important;
 }
+
+.modalContainer {
+    max-width: 700px;
+}

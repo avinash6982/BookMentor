@@ -10,7 +10,7 @@ import Mentor from "./container/Mentor";
 import Bookings from "./container/Bookings";
 
 import { ProtectedRoute } from "./ProtectedRoute";
-import Admin from "./container/admin";
+import Admin from "./container/Admin";
 
 function useQuery() {
 

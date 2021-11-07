@@ -4,9 +4,9 @@ import { Col, Container, Row, Card } from "react-bootstrap";
 
 import classes from "./styles.module.css";
 
-const profiles = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-const Results = () => {
+const Results = ({
+    mentors
+}) => {
 
     const history = useHistory()
 
@@ -36,7 +36,7 @@ const Results = () => {
         <Container>
             <Row>
                 {
-                    Object.values(profiles)
+                    Object.values(mentors)
                         .map(item => <Profile key={item} />)
                 }
             </Row>
