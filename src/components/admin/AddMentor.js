@@ -109,7 +109,7 @@ const AddMentorForm = ({
     </Form>
 
 const AddMentor = ({
-    addUser,
+    addMentor,
     show,
     handleClose,
     categories
@@ -134,7 +134,7 @@ const AddMentor = ({
 
     const onSubmit = () => {
 
-        addUser(state)
+        addMentor(state)
             .then(res => console.log(res))
             .catch(err => console.log(err.response))
     }

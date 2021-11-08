@@ -19,16 +19,12 @@ const Admin = () => {
             .then(res => setCategories({ ...res.data.data }))
             .catch(err => console.log(err))
 
-    const addUser = data => {
+    const addMentor = data => {
 
-        let imageFile = new FormData()
-        imageFile.append("pic", data.pic)
-        let postData = {
-            ...data,
-            ...imageFile
-        }
-        console.log(postData)
-        return postMentor(postData)
+        let mentorData = new FormData()
+        Object.keys(data)
+            .map(key => mentorData.append(key, data[key]))
+        return postMentor(mentorData)
     }
 
     useEffect(() => {
@@ -39,7 +35,7 @@ const Admin = () => {
     return (
         <LayoutWrapper>
             <AdminComponent
-                addUser={addUser}
+                addMentor={addMentor}
                 mentors={mentors}
                 categories={categories} />
         </LayoutWrapper>
