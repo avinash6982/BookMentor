@@ -6,37 +6,39 @@ import CustomButton from "../../common/buttons/CustomButton";
 
 import classes from "./styles.module.css";
 
-const profiles = [0, 1, 2, 3, 4, 5, 6]
-
-const Results = () => {
+const Results = ({
+    mentors
+}) => {
 
     const history = useHistory()
 
-    const Profile = () =>
+    const Profile = ({ mentor }) =>
         <Col sm={6}>
+            {console.log(mentor)}
             <Card className={classes.profileContainer}>
                 <Row>
                     <Col md={4}>
                         <Row>
-                            <Card.Img className={classes.profileImage} variant="top" src="https://via.placeholder.com/150" />
+                            <Card.Img className={classes.profileImage} variant="top" src={`${process.env.REACT_APP_API_URL}${mentor.pic}`} />
                         </Row>
                         <Row>
                             <Card.Body>
                                 <Card.Title onClick={() => history.push("/mentor?id=22")} className={classes.profileName}>
-                                    {/* <Link to="/mentor?id=22"> */}
-                                    Rajesh Moorthy
-                                    {/* </Link> */}
+                                    {mentor.name}
                                 </Card.Title>
                                 <Card.Text className={classes.points}>
-                                    Front-end developer: 7 years
+                                    {mentor.role}
                                 </Card.Text>
                                 <Card.Text className={classes.points}>
-                                    Avg Mentor Rating: 3/5
+                                    {mentor.category}
+                                </Card.Text>
+                                <Card.Text className={classes.points}>
+                                    {mentor.course}
                                 </Card.Text>
                             </Card.Body>
                         </Row>
                     </Col>
-                    <Col md={8}>
+                    <Col md={8} style={{ position: "relative" }}>
                         <Card.Body>
                             <Card.Title className={classes.profileObjectives}>What will you learn</Card.Title>
                             <ul className={classes.listParent}>
@@ -62,7 +64,10 @@ const Results = () => {
                                 </li>
                             </ul>
                             <Card.Text className={classes.profileDesc}>
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                {mentor.shortDescription}
+                            </Card.Text>
+                            <Card.Text className={classes.profileDesc}>
+                                {mentor.longDescription}
                             </Card.Text>
                             <div className={classes.buttonContainer}>
                                 <CustomButton
@@ -81,12 +86,9 @@ const Results = () => {
         <Container className={classes.resultsContainer}>
             <Row>
                 {
-                    Object.values(profiles)
-                        .map(item => <Profile key={item} />)
+                    Object.values(mentors)
+                        .map(item => <Profile key={item._id} mentor={item} />)
                 }
-                <Profile />
-                <Profile />
-                <Profile />
             </Row>
         </Container>
     );

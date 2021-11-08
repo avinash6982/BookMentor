@@ -1,43 +1,69 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { Col, Container, Row, Card } from "react-bootstrap";
+import { Col, Container, Row, Card, Image } from "react-bootstrap";
 
 import classes from "./styles.module.css";
+import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
-const Results = ({
-    mentors
-}) => {
+const Profile = item => {
 
     const history = useHistory()
+    let mentor = item.mentor
 
-    const Profile = () =>
+    return (
         <Col sm={3}>
             <Card className={classes.profileContainer}>
+                <span className={classes.cardActions}>
+                    <FontAwesomeIcon
+                        onClick={() => console.log("edit profile")}
+                        tooltip="edit"
+                        paddingRight="1rem"
+                        title="pencil" />
+                    <FontAwesomeIcon
+                        onClick={() => console.log("delete profile")}
+                        tooltip="delete"
+                        title="trash" />
+                </span>
                 <Row>
-                    <Card.Img className={classes.profileImage} variant="top" src="https://via.placeholder.com/150" />
+                    <Card.Img className={classes.profileImage} variant="top" src={`${process.env.REACT_APP_API_URL}${mentor.pic}`} />
                 </Row>
                 <Row>
-                    <Card.Body>
+                    <Card.Body className={classes.profilePointsContainer}>
                         <Card.Title onClick={() => history.push("/mentor?id=22")} className={classes.profileName}>
-                            Rajesh Moorthy
+                            {mentor.name}
                         </Card.Title>
                         <Card.Text className={classes.points}>
-                            Front-end developer: 7 years
+                            {mentor.category}
                         </Card.Text>
                         <Card.Text className={classes.points}>
-                            Avg Mentor Rating: 3/5
+                            {mentor.course}
+                        </Card.Text>
+                        <Card.Text className={classes.points}>
+                            {mentor.role}
+                        </Card.Text>
+                        <Card.Text className={classes.points}>
+                            {mentor.shortDescription}
+                        </Card.Text>
+                        <Card.Text className={classes.points}>
+                            {mentor.longDescription}
                         </Card.Text>
                     </Card.Body>
                 </Row>
             </Card>
         </Col >
+    );
+}
+
+const Results = ({
+    mentors
+}) => {
 
     return (
         <Container>
             <Row>
                 {
                     Object.values(mentors)
-                        .map(item => <Profile key={item} />)
+                        .map(item => <Profile key={item._id} mentor={item} />)
                 }
             </Row>
         </Container>

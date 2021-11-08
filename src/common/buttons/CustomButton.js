@@ -16,7 +16,7 @@ const ButtonPrimary = ({
         {text}
         {
             icon &&
-            <FontAwesomeIcon title={icon} marginLeft="10px" />
+            <FontAwesomeIcon title={icon} paddingLeft="10px" />
         }
     </Button>
 

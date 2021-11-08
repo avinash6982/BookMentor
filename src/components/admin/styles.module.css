@@ -23,6 +23,7 @@
     text-align: left;
     padding: 1em;
     margin: 1em;
+    position: relative;
 }
 
 .searchBar {
@@ -36,8 +37,8 @@
 }
 
 .profileImage {
-    width: 100%;
-    height: auto;
+    width: 4rem;
+    height: 4rem;
 }
 
 .profileName {
@@ -50,4 +51,15 @@
 
 .modalContainer {
     max-width: 700px;
+}
+
+.cardActions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+}
+
+.profilePointsContainer {
+    padding: 1rem 0rem !important;
 }

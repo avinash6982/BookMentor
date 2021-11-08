@@ -14,11 +14,11 @@ function App() {
 
   return (
     <div className="App">
-      {auth.user.info && <Navbar />}
+      {auth.user.userType && <Navbar />}
       <Router>
         <Routes />
       </Router>
-      {auth.user.info && <Footer />}
+      {auth.user.userType && <Footer />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { API_URL } from '../common/constants/ApiUrl';
+const API_URL = process.env.REACT_APP_API_URL
 
 export const registerUser = user =>
     axios.post(API_URL + 'api/auth/register', { ...user })

@@ -2,8 +2,8 @@ const FontAwesomeIcon = ({
     title,
     size,
     color,
-    marginLeft,
-    marginRight,
+    paddingLeft,
+    paddingRight,
     onMouseEnter,
     onMouseOut,
     onClick,
@@ -13,8 +13,8 @@ const FontAwesomeIcon = ({
     const styles = {
         fontSize: size || "25",
         color: color,
-        marginLeft: marginLeft,
-        marginRight: marginRight,
+        paddingLeft: paddingLeft,
+        paddingRight: paddingRight,
         zIndex: 99
     }
 

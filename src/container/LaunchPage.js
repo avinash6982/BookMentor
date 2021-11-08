@@ -19,12 +19,12 @@ export default function LaunchPage() {
         showSignupError: false,
         showEmailError: false
     })
-    if (auth.user.info)
+    if (auth.user.userType)
         return <Redirect to={{ pathname: from.pathname }} />
 
     const onSignin = data =>
         signin(data)
-            .then(res => res.status === 200 && auth.signin("user", () => history.push("/")))
+            .then(res => res.status === 200 && auth.signin(res.data.userType, () => history.push("/")))
             .catch(err => err.response.status === 401 ?
                 setErrMessages({
                     showAuthErr: true

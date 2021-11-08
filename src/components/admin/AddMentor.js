@@ -7,7 +7,8 @@ import classes from "./styles.module.css";
 const AddMentorForm = ({
     state,
     updateState,
-    categories
+    categories,
+    courses
 }) =>
     <Form>
         <Form.Group as={Row} className="mb-3">
@@ -46,12 +47,15 @@ const AddMentorForm = ({
                 Course name :
             </Form.Label>
             <Col sm="8">
-                <Form.Control
-                    value={state.course}
+                <Form.Select
                     onChange={e => updateState("course", e.target.value)}
-                    className={classes.inputField}
-                    type="text"
-                    placeholder="Course name" />
+                    className={classes.inputField}>
+                    <option>Select</option>
+                    {
+                        Object.values(courses)
+                            .map(item => <option value={item._id} key={item._id}>{item.name}</option>)
+                    }
+                </Form.Select>
             </Col>
         </Form.Group>
 
@@ -112,7 +116,8 @@ const AddMentor = ({
     addMentor,
     show,
     handleClose,
-    categories
+    categories,
+    courses
 }) => {
 
     const [state, setState] = useState({
@@ -135,7 +140,7 @@ const AddMentor = ({
     const onSubmit = () => {
 
         addMentor(state)
-            .then(res => console.log(res))
+            .then(res => res.status === 200 && handleClose())
             .catch(err => console.log(err.response))
     }
 
@@ -148,7 +153,8 @@ const AddMentor = ({
                 <AddMentorForm
                     state={state}
                     updateState={updateState}
-                    categories={categories} />
+                    categories={categories}
+                    courses={courses} />
             </Modal.Body>
             <Modal.Footer>
                 <CustomButton

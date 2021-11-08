@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import AdminComponent from "../components/admin";
 import LayoutWrapper from "../common/wrapper/LayoutWrapper";
-import { getCategories, getMentors, postMentor } from "../api/MasterDataService";
+import { getCategories, getCourses, getMentors, postMentor } from "../api/MasterDataService";
 
 const Admin = () => {
 
     const [mentors, setMentors] = useState([])
     const [categories, setCategories] = useState([])
+    const [courses, setCourses] = useState({})
 
     const fetchMentors = () =>
         getMentors()
@@ -17,6 +18,11 @@ const Admin = () => {
     const fetchCategories = () =>
         getCategories()
             .then(res => setCategories({ ...res.data.data }))
+            .catch(err => console.log(err))
+
+    const fetchCourses = () =>
+        getCourses()
+            .then(res => setCourses({ ...res.data.data }))
             .catch(err => console.log(err))
 
     const addMentor = data => {
@@ -30,14 +36,17 @@ const Admin = () => {
     useEffect(() => {
         fetchMentors()
         fetchCategories()
+        fetchCourses()
     }, [])
 
     return (
         <LayoutWrapper>
             <AdminComponent
+                fetchMentors={fetchMentors}
                 addMentor={addMentor}
                 mentors={mentors}
-                categories={categories} />
+                categories={categories}
+                courses={courses} />
         </LayoutWrapper>
     );
 }

@@ -112,7 +112,7 @@ const Signin = ({
                 <a href="/" className={classes.links}>Forgot password</a>
                 <a href="/" className={classes.links}>
                     Help
-                    <FontAwesomeIcon color="#2A4F96" title="question-circle" marginLeft="5px" />
+                    <FontAwesomeIcon color="#2A4F96" title="question-circle" paddingLeft="5px" />
                 </a>
             </div>
         </Form>
