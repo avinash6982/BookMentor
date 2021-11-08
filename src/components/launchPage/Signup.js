@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Collapse, Form, } from "react-bootstrap";
+
 import CustomButton from "../../common/buttons/CustomButton";
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 import { confirmPasswordValidator, emailValidator, fullNameValidator, passwordValidator } from "../../services/validators/FormValidator";

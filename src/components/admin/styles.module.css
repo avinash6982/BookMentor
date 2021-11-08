@@ -36,9 +36,15 @@
     color: #2a4f96;
 }
 
+.ProfileImageContainer {
+    display: grid;
+    place-items: center;
+}
+
 .profileImage {
-    width: 4rem;
-    height: 4rem;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
 }
 
 .profileName {
@@ -54,12 +60,10 @@
 }
 
 .cardActions {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
     position: absolute;
     top: 0;
     right: 0;
     padding: 0.5rem;
-}
-
-.profilePointsContainer {
-    padding: 1rem 0rem !important;
 }

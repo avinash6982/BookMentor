@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Redirect, useHistory, useLocation } from "react-router";
+
+import { useAuth } from "../AuthContext";
 import { signin } from "../api/Signin";
 import { registerUser } from "../api/Signup";
-import { useAuth } from "../AuthContext";
-
 import LaunchPageComponent from "../components/launchPage";
 
 export default function LaunchPage() {

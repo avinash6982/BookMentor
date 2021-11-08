@@ -1,9 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { Col, Container, Row, Card, Image } from "react-bootstrap";
+import { Col, Container, Row, Card } from "react-bootstrap";
+
+import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
 import classes from "./styles.module.css";
-import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
 
 const Profile = item => {
 
@@ -24,11 +25,11 @@ const Profile = item => {
                         tooltip="delete"
                         title="trash" />
                 </span>
-                <Row>
+                <Row className={classes.ProfileImageContainer}>
                     <Card.Img className={classes.profileImage} variant="top" src={`${process.env.REACT_APP_API_URL}${mentor.pic}`} />
                 </Row>
                 <Row>
-                    <Card.Body className={classes.profilePointsContainer}>
+                    <Card.Body>
                         <Card.Title onClick={() => history.push("/mentor?id=22")} className={classes.profileName}>
                             {mentor.name}
                         </Card.Title>

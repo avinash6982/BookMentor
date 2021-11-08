@@ -17,7 +17,7 @@ const Results = ({
             <Card className={classes.profileContainer}>
                 <Row>
                     <Col md={4}>
-                        <Row>
+                        <Row className={classes.profileImageContainer}>
                             <Card.Img className={classes.profileImage} variant="top" src={`${process.env.REACT_APP_API_URL}${mentor.pic}`} />
                         </Row>
                         <Row>
