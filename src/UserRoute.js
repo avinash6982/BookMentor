@@ -4,7 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import LoadingScreen from "./common/loading";
 
-export const ProtectedRoute = ({
+export const UserRoute = ({
     component: Component,
     id,
     ...rest
@@ -18,9 +18,20 @@ export const ProtectedRoute = ({
             render={props => {
                 if (auth.user.isLoading)
                     return <LoadingScreen />
-                else if (auth.user.userType) {
-                    return <Component id={id} {...props} />;
-                } else {
+                else if (auth.user.userType === "user")
+                    return <Component id={id} {...props} />
+                else if (auth.user.userType === "admin")
+                    return (
+                        <Redirect
+                            to={{
+                                pathname: "/admin",
+                                state: {
+                                    from: props.location
+                                }
+                            }}
+                        />
+                    );
+                else {
                     return (
                         <Redirect
                             to={{

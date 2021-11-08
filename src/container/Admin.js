@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import AdminComponent from "../components/admin";
 import LayoutWrapper from "../common/wrapper/LayoutWrapper";
 import { getCategories, getCourses, getMentors, postMentor } from "../api/MasterDataService";
+import { useAuth } from "../AuthContext";
+import { Redirect, useLocation } from "react-router";
 
 const Admin = () => {
 

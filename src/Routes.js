@@ -9,8 +9,9 @@ import Home from "./container/Home";
 import Mentor from "./container/Mentor";
 import Bookings from "./container/Bookings";
 
-import { ProtectedRoute } from "./ProtectedRoute";
+import { UserRoute } from "./UserRoute";
 import Admin from "./container/Admin";
+import { AdminRoute } from "./AdminRoute";
 
 function useQuery() {
 
@@ -23,10 +24,10 @@ export default function Routes() {
 
     return (
         <Switch>
-            <ProtectedRoute exact path="/bookings" component={Bookings} />
-            <ProtectedRoute exact path="/mentor" component={Mentor} id={query.get("id")} />
-            <ProtectedRoute exact path="/" component={Home} />
-            <ProtectedRoute exact path="/admin" component={Admin} />
+            <UserRoute exact path="/bookings" component={Bookings} />
+            <UserRoute exact path="/mentor" component={Mentor} id={query.get("id")} />
+            <UserRoute exact path="/" component={Home} />
+            <AdminRoute exact path="/admin" component={Admin} />
             <Route path="/welcome" component={LaunchPage} />
             <Route path="*" component={() => "404 NOT FOUND"} />
         </Switch>

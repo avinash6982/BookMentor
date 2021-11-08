@@ -14,7 +14,6 @@ const Results = ({
 
     const Profile = ({ mentor }) =>
         <Col sm={6}>
-            {console.log(mentor)}
             <Card className={classes.profileContainer}>
                 <Row>
                     <Col md={4}>
