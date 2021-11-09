@@ -4,16 +4,20 @@ import TransitionWrapper from "../../common/wrapper/TransitionWrapper";
 import Results from "./Results";
 import SearchOptions from "./SearchOptions";
 import ResultsHeader from "./ResultsHeader";
+import DataFetchWrapper from "../../common/wrapper/DataFetchWrapper";
 
 const HomepageComponent = ({
-    mentors
+    status,
+    data
 }) => {
 
     return (
         <TransitionWrapper>
             <SearchOptions />
             <ResultsHeader />
-            <Results mentors={mentors} />
+            <DataFetchWrapper status={status}>
+                <Results mentors={data} />
+            </DataFetchWrapper>
         </TransitionWrapper>
     );
 }
