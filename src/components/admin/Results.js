@@ -12,7 +12,7 @@ const Profile = item => {
     let mentor = item.mentor
 
     return (
-        <Col sm={3}>
+        <Col sm={12} md={6} lg={3}>
             <Card className={classes.profileContainer}>
                 <span className={classes.cardActions}>
                     <FontAwesomeIcon

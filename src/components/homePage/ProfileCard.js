@@ -14,7 +14,7 @@ const ProfileCard = ({
     const history = useHistory()
 
     return (
-        <Col sm={6}>
+        <Col sm={12} md={6}>
             <Card className={classes.profileContainer}>
                 <Row>
                     <Col md={4}>
