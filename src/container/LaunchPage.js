@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Redirect, useHistory, useLocation } from "react-router";
+
+import { useAuth } from "../AuthContext";
 import { signin } from "../api/Signin";
 import { registerUser } from "../api/Signup";
-import { useAuth } from "../AuthContext";
-
 import LaunchPageComponent from "../components/launchPage";
 
 export default function LaunchPage() {
@@ -15,24 +15,38 @@ export default function LaunchPage() {
     const [page, setPage] = useState("signin")
     const [errMessages, setErrMessages] = useState({
         showSigninError: false,
-        showSignupError: false
+        showAuthErr: false,
+        showSignupError: false,
+        showEmailError: false
     })
-    if (auth.user.info)
+    if (auth.user.userType)
         return <Redirect to={{ pathname: from.pathname }} />
 
     const onSignin = data =>
         signin(data)
-            .then(res => res.status === 200 && auth.signin("user", () => history.push("/")))
-            .catch(() => setErrMessages({
-                showSigninError: true
-            }))
+            .then(res => res.status === 200 && auth.signin(res.data.userType, () => history.push("/")))
+            .catch(err => err.response.status === 401 ?
+                setErrMessages({
+                    showAuthErr: true
+                }) :
+                setErrMessages({
+                    showSigninError: true
+                })
+            )
 
-    const onSignup = data =>
+    const onSignup = data => {
+        setErrMessages({})
         registerUser(data)
             .then(() => setPage("signin"))
-            .catch(() => setErrMessages({
-                showSignupError: true
-            }))
+            .catch(err => err.response.status === 409 ?
+                setErrMessages({
+                    showEmailError: true
+                }) :
+                setErrMessages({
+                    showSignupError: true
+                })
+            )
+    }
 
     return (
         <LaunchPageComponent

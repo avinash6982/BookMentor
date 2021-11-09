@@ -9,7 +9,7 @@ import classes from "./styles.module.css";
 const Signin = ({
     onSignin,
     setPage,
-    signinErr
+    errMessages
 }) => {
 
     const [state, setState] = useState({
@@ -17,7 +17,6 @@ const Signin = ({
         password: ""
     })
 
-    //function to safe update component state
     const updateState = (label, data) =>
         setState(previousState => ({
             ...previousState,
@@ -81,9 +80,14 @@ const Signin = ({
                     Please input a valid password
                 </div>
             </Collapse>
-            <Collapse in={signinErr}>
+            <Collapse in={errMessages.showAuthErr}>
                 <div className={classes.errorMessages}>
                     Invalid credentials, please try again
+                </div>
+            </Collapse>
+            <Collapse in={errMessages.showSigninError}>
+                <div className={classes.errorMessages}>
+                    Something went wrong, please try again
                 </div>
             </Collapse>
 
@@ -108,7 +112,7 @@ const Signin = ({
                 <a href="/" className={classes.links}>Forgot password</a>
                 <a href="/" className={classes.links}>
                     Help
-                    <FontAwesomeIcon color="#2A4F96" title="question-circle" marginLeft="5px" />
+                    <FontAwesomeIcon color="#2A4F96" title="question-circle" paddingLeft="5px" />
                 </a>
             </div>
         </Form>

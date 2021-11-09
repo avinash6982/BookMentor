@@ -5,20 +5,20 @@ const AuthContext = createContext()
 const AuthProvider = props => {
 
     const [user, setUser] = useState({
-        info: null,
+        userType: null,
         isLoading: true
     })
 
     const updateUser = user =>
         setUser({
-            info: user,
+            userType: user,
             isLoading: false
         })
 
     useEffect(() => {
 
         let userDetails = JSON.parse(localStorage.getItem("fastClassUser"))
-        if (userDetails !== user.info)
+        if (userDetails !== user.userType)
             updateUser(userDetails)
         else
             updateUser(null)
@@ -31,11 +31,10 @@ const AuthProvider = props => {
         cb()
     };
 
-    const signout = cb => {
+    const signout = () => {
 
         updateUser(null)
         localStorage.removeItem("fastClassUser")
-        cb()
     };
 
     const authContextValue = {

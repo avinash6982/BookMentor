@@ -2,39 +2,45 @@
     display: flex;
     align-items: center;
 }
+
 .container {
     width: 100%;
 }
-.resultsContainer {
-}
-.resultsHeaderContainer,
-.searchOptionsContainer {
+
+.resultsContainer {}
+
+.resultsHeaderContainer, .searchOptionsContainer {
     padding-top: 2em;
     width: 80%;
 }
+
 @media only screen and (min-width: 500px) {
     .container {
         width: 80%;
     }
 }
-.inputContainer,
-.selectContainer {
+
+.inputContainer, .selectContainer {
     position: relative;
     display: flex;
     align-items: center;
 }
+
 .inputContainer i {
     position: absolute;
     right: 1em;
 }
+
 .searchBar {
     height: 45px;
     border-radius: 22px;
     border: 1px solid #707070;
 }
+
 .searchBar::placeholder {
     color: #2a4f96;
 }
+
 .select {
     height: 45px;
     border-radius: 22px;
@@ -44,10 +50,12 @@
     color: #2a4f96 !important;
     text-align: left;
 }
+
 .text {
     padding: 0.6rem;
     color: #2a4f96;
 }
+
 .select::after {
     position: absolute;
     right: 15px;
@@ -55,6 +63,7 @@
     color: #2a4f96;
     width: 10px;
 }
+
 .filterButton {
     background-color: white;
     color: #2a4f96;
@@ -62,46 +71,63 @@
     height: 40px;
     border-radius: 20px;
 }
-.profileImage {
-    width: 100%;
-    height: auto;
+
+.ProfileImageContainer {
+    display: grid;
+    place-items: center;
 }
+
+.profileImage {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
 .profileName {
     font-size: 18px !important;
 }
+
 .points {
     font-size: 10px !important;
 }
+
 .profileObjectives {
     font-size: 16px !important;
 }
-.profileObjectives,
-.profileName,
-.points {
+
+.profileObjectives, .profileName, .points {
     color: #2a4f96 !important;
 }
+
 .profileContainer {
     text-align: left;
     padding: 1em;
     margin: 1em;
 }
+
 .listParent {
     display: inline-block;
     list-style-type: none;
     overflow: hidden;
     padding-inline-start: 0px !important;
 }
+
 .listParent li {
     width: 50%;
     float: left;
 }
+
 .profileDesc {
     font-weight: 500;
     font-size: 14px;
 }
+
 .buttonContainer {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
+
 .profileAction {
     float: right;
     height: 40px;
@@ -109,6 +135,7 @@
     padding-right: 1em;
     padding-left: 1em;
 }
+
 @media only screen and (max-width: 500px) {
     .profileAction {
         width: 100%;
@@ -116,6 +143,7 @@
 }
 
 /* footer */
+
 .footerContainer {
     margin-top: 2em;
     background-color: #2a4f96;
@@ -123,6 +151,7 @@
     text-align: left;
     padding: 3em;
 }
+
 .footerLogo {
     font-size: 40px;
 }
