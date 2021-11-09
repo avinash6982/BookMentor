@@ -11,11 +11,11 @@ const fetchMentors = () =>
 
 const Home = () => {
 
-    const { data, status } = useQuery("mentors", fetchMentors)
+    const { status } = useQuery("mentors", fetchMentors)
 
     return (
         <LayoutWrapper>
-            <HomepageComponent status={status} data={data} />
+            <HomepageComponent status={status} />
         </LayoutWrapper>
     );
 }
