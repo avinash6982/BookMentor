@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import React from "react";
+import { Modal, Col, Row } from "react-bootstrap";
 
 import CustomButton from "../../common/buttons/CustomButton";
+import CustomCalendar from "../../common/calendar";
 
 import classes from "./styles.module.css";
 
@@ -17,7 +18,11 @@ const Schedule = ({
                 <Modal.Title>Schedule Class</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h1>Unda</h1>
+                <Row>
+                    <Col>
+                        <CustomCalendar />
+                    </Col>
+                </Row>
             </Modal.Body>
             <Modal.Footer>
                 <CustomButton
