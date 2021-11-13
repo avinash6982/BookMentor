@@ -72,7 +72,7 @@
     border-radius: 20px;
 }
 
-.ProfileImageContainer {
+.centeredContainer, .ProfileImageContainer {
     display: grid;
     place-items: center;
 }
@@ -128,30 +128,10 @@
     right: 0;
 }
 
-.profileAction {
-    float: right;
-    height: 40px;
-    border-radius: 20px;
-    padding-right: 1em;
-    padding-left: 1em;
+.timeItem {
+    font-size: 18px;
 }
 
-@media only screen and (max-width: 500px) {
-    .profileAction {
-        width: 100%;
-    }
-}
-
-/* footer */
-
-.footerContainer {
-    margin-top: 2em;
-    background-color: #2a4f96;
-    color: white;
-    text-align: left;
-    padding: 3em;
-}
-
-.footerLogo {
-    font-size: 40px;
+.timeItemActive {
+    font-size: 24px;
 }

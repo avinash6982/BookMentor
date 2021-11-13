@@ -1,15 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Col, Container, Row, Card } from "react-bootstrap";
+import { useQueryClient } from "react-query";
 
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
+import DataFetchWrapper from "../../common/wrapper/DataFetchWrapper";
 
 import classes from "./styles.module.css";
 
-const Profile = item => {
+const Profile = ({ mentor, removeMentor }) => {
 
     const history = useHistory()
-    let mentor = item.mentor
 
     return (
         <Col sm={12} md={6} lg={3}>
@@ -21,7 +22,7 @@ const Profile = item => {
                         paddingRight="1rem"
                         title="pencil" />
                     <FontAwesomeIcon
-                        onClick={() => console.log("delete profile")}
+                        onClick={() => removeMentor(mentor._id)}
                         tooltip="delete"
                         title="trash" />
                 </span>
@@ -55,18 +56,24 @@ const Profile = item => {
     );
 }
 
-const Results = ({
-    mentors
-}) => {
+const Results = ({ removeMentor }) => {
+
+    const queryClient = useQueryClient()
+    let queryResult = queryClient.getQueryState()
+    queryClient.invalidateQueries("mentors")
 
     return (
         <Container>
-            <Row>
-                {
-                    Object.values(mentors)
-                        .map(item => <Profile key={item._id} mentor={item} />)
-                }
-            </Row>
+            <DataFetchWrapper status={queryResult.status}>
+                <Row>
+                    {
+                        queryResult.data &&
+                        Object.values(queryResult.data)
+                            .map(item =>
+                                <Profile key={item._id} mentor={item} removeMentor={removeMentor} />)
+                    }
+                </Row>
+            </DataFetchWrapper>
         </Container>
     );
 }

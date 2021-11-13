@@ -1,52 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useMutation, useQuery } from "react-query";
 
 import AdminComponent from "../components/admin";
 import LayoutWrapper from "../common/wrapper/LayoutWrapper";
-import { getCategories, getCourses, getMentors, postMentor } from "../api/MasterDataService";
+import { deleteMentor, getCategories, getCourses, getMentors, postMentor } from "../api/MasterDataService";
 
 const Admin = () => {
 
-    const [mentors, setMentors] = useState([])
-    const [categories, setCategories] = useState([])
-    const [courses, setCourses] = useState({})
+    useQuery("mentors", getMentors)
+    useQuery("categories", getCategories)
+    useQuery("courses", getCourses)
 
-    const fetchMentors = () =>
-        getMentors()
-            .then(res => setMentors({ ...res.data.data }))
-            .catch(err => console.log(err))
+    // const removeMentor = useMutation(mentorId => deleteMentor(mentorId), { onSuccess: () => console.log("done") })
+    const removeMentor = mentorId =>
+        deleteMentor(mentorId)
+            .then(res => res)
+            .catch(err => console.log(err.response))
 
-    const fetchCategories = () =>
-        getCategories()
-            .then(res => setCategories({ ...res.data.data }))
-            .catch(err => console.log(err))
-
-    const fetchCourses = () =>
-        getCourses()
-            .then(res => setCourses({ ...res.data.data }))
-            .catch(err => console.log(err))
-
-    const addMentor = data => {
-
+    const addMentor = useMutation(data => {
         let mentorData = new FormData()
         Object.keys(data)
             .map(key => mentorData.append(key, data[key]))
         return postMentor(mentorData)
-    }
+    })
 
-    useEffect(() => {
-        fetchMentors()
-        fetchCategories()
-        fetchCourses()
-    }, [])
+    // const addMentor = data => {
+
+    //     let mentorData = new FormData()
+    //     Object.keys(data)
+    //         .map(key => mentorData.append(key, data[key]))
+    //     return postMentor(mentorData)
+    // }
 
     return (
         <LayoutWrapper>
             <AdminComponent
-                fetchMentors={fetchMentors}
-                addMentor={addMentor}
-                mentors={mentors}
-                categories={categories}
-                courses={courses} />
+                removeMentor={removeMentor}
+                addMentor={addMentor} />
         </LayoutWrapper>
     );
 }
