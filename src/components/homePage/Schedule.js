@@ -8,13 +8,14 @@ import { getTimeSlots } from "../../services/validators/TimeConverter";
 
 import classes from "./styles.module.css";
 
-const TimeSelector = ({ timeSlots }) => {
+const TimeSelector = ({ time, setTime, timeSlots }) => {
 
-    const [active, setActive] = useState(0)
+    const [active, setActive] = useState(time || 0)
     const onSelectTime = id => {
         setActive(id)
-        console.log(`selected ${timeSlots[id][0]}`)
+        setTime(timeSlots[id][0])
     }
+
     return (
         <>
             {
@@ -42,15 +43,13 @@ const Schedule = ({
         userId: "",
         mentorId: "",
         date: new Date(),
-        time: ""
+        time: timeSlots[0] ? timeSlots[0][0] : ""
     })
     const updateBookingData = data =>
         setBookingData(previousState => ({
             ...previousState,
             ...data
         }))
-
-    console.log(bookingData)
 
     return (
         <Modal size="lg" centered show={scheduleMenu.show} dialogClassName={classes.modalContainer} onHide={handleClose}>
@@ -63,7 +62,7 @@ const Schedule = ({
                         <CustomCalendar date={bookingData.date} setDate={updateBookingData} />
                     </Col>
                     <Col sm={6} className={classes.centeredContainer}>
-                        <TimeSelector updateBookingData={updateBookingData} timeSlots={timeSlots} />
+                        <TimeSelector time={bookingData.time} setTime={updateBookingData} timeSlots={timeSlots} />
                     </Col>
                 </Row>
             </Modal.Body>
