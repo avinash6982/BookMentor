@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Alert, Collapse } from "react-bootstrap";
 
 import TransitionWrapper from "../../common/wrapper/TransitionWrapper";
 import Results from "./Results";
@@ -16,11 +17,33 @@ const HomepageComponent = ({
         mentor: {}
     })
 
+    const [alert, setAlert] = useState({
+        show: false,
+        text: "",
+        variant: ""
+    })
+
+    const toggleAlert = state =>
+        setAlert(previousState => ({
+            ...previousState,
+            show: state
+        }))
+
+    useEffect(() => alert.show && setTimeout(() => toggleAlert(false), 2000), [alert.show])
+
     return (
         <TransitionWrapper>
             <Schedule
+                setAlert={setAlert}
                 handleClose={() => setScheduleMenu({ show: false, mentor: {} })}
                 scheduleMenu={scheduleMenu} />
+            <Collapse in={alert.show}>
+                <div style={{ paddingTop: "1rem" }}>
+                    <Alert variant={alert.variant}>
+                        {alert.text}
+                    </Alert>
+                </div>
+            </Collapse>
             <SearchOptions />
             <ResultsHeader />
             <DataFetchWrapper status={status}>

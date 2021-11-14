@@ -1,7 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Form, Dropdown } from "react-bootstrap";
+import { useQuery, useQueryClient } from "react-query";
+import { getCategories } from "../../api/MasterDataService";
 
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
+import DataFetchWrapper from "../../common/wrapper/DataFetchWrapper";
 
 import classes from "./styles.module.css"
 
@@ -24,18 +27,19 @@ const SearchBar = () => {
 
 const DropDown = () => {
 
-    return (
-        <Dropdown align="end" className={classes.selectContainer}>
-            <Dropdown.Toggle className={classes.select} variant="default" id="dropdown-basic">
-                Choose Category
-            </Dropdown.Toggle>
+    const { data, status } = useQuery("categories", getCategories)
 
-            <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
+    return (
+        <Container className={classes.selectContainer}>
+            <Form.Select onChange={e => console.log(e.target.value)} className={classes.select}>
+                <DataFetchWrapper status={status}>
+                    {
+                        Object.values(data)
+                            .map(item => <option>{item.name}</option>)
+                    }
+                </DataFetchWrapper>
+            </Form.Select>
+        </Container>
     );
 }
 

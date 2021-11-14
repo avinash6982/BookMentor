@@ -31,17 +31,20 @@ const TimeSelector = ({ time, setTime, timeSlots }) => {
 }
 
 const Schedule = ({
+    setAlert,
     handleClose,
     scheduleMenu
 }) => {
 
     const timeSlots = getTimeSlots(scheduleMenu.mentor.startTime, scheduleMenu.mentor.endTime)
+
     const [bookingData, setBookingData] = useState({
         userId: "",
         mentorId: "",
         date: new Date(),
         time: "1"
     })
+
     const updateBookingData = data =>
         setBookingData(previousState => ({
             ...previousState,
@@ -50,7 +53,12 @@ const Schedule = ({
 
     const onSubmit = () => {
         console.log(bookingDataResolver(bookingData))
-        // console.log(bookingData)
+        setAlert({
+            show: true,
+            text: "Booking success",
+            variant: "primary"
+        })
+        handleClose()
     }
 
     return (
