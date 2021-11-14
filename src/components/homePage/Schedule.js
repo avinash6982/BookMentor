@@ -1,28 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Col, Row } from "react-bootstrap";
+import { useQueryClient } from "react-query";
 
 import CustomButton from "../../common/buttons/CustomButton";
 import CustomCalendar from "../../common/calendar";
+import { getTimeSlots } from "../../services/validators/TimeConverter";
 
 import classes from "./styles.module.css";
 
-const TimeSelector = () => {
+const TimeSelector = ({ timeSlots }) => {
 
-    const timeSlots = {
-        0: {_id: 1, time: "7AM - 8AM"},
-        1: {_id: 2, time: "8AM - 9AM"},
-        2: {_id: 3, time: "9AM - 10AM"},
-        3: {_id: 4, time: "10AM - 11AM"},
-        4: {_id: 5, time: "11AM - 12AM"},
+    const [active, setActive] = useState(0)
+    const onSelectTime = id => {
+        setActive(id)
+        console.log(`selected ${timeSlots[id][0]}`)
     }
-
     return (
         <>
-            <Row className={classes.timeItem}>Unda</Row>
-            <Row className={classes.timeItem}>Unda</Row>
-            <Row className={classes.timeItem}>Unda</Row>
-            <Row className={classes.timeItem}>Unda</Row>
-            <Row className={classes.timeItemActive}>Unda</Row>
+            {
+                Object.keys(timeSlots)
+                    .map(item =>
+                        <Row
+                            onClick={() => onSelectTime(item)}
+                            key={item}
+                            className={item === active.toString() ? classes.timeItemActive : classes.timeItem}>
+                            {timeSlots[item][1]}
+                        </Row>)
+            }
         </>
     );
 }
@@ -30,21 +34,36 @@ const TimeSelector = () => {
 const Schedule = ({
     onSubmit,
     handleClose,
-    show
+    scheduleMenu
 }) => {
 
+    const timeSlots = getTimeSlots(scheduleMenu.mentor.startTime, scheduleMenu.mentor.endTime)
+    const [bookingData, setBookingData] = useState({
+        userId: "",
+        mentorId: "",
+        date: new Date(),
+        time: ""
+    })
+    const updateBookingData = data =>
+        setBookingData(previousState => ({
+            ...previousState,
+            ...data
+        }))
+
+    console.log(bookingData)
+
     return (
-        <Modal size="lg" centered show={show} dialogClassName={classes.modalContainer} onHide={handleClose}>
+        <Modal size="lg" centered show={scheduleMenu.show} dialogClassName={classes.modalContainer} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Schedule Class</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Row>
                     <Col sm={6} className={classes.centeredContainer}>
-                        <CustomCalendar />
+                        <CustomCalendar date={bookingData.date} setDate={updateBookingData} />
                     </Col>
                     <Col sm={6} className={classes.centeredContainer}>
-                        <TimeSelector />
+                        <TimeSelector updateBookingData={updateBookingData} timeSlots={timeSlots} />
                     </Col>
                 </Row>
             </Modal.Body>

@@ -27,3 +27,9 @@ export const postMentor = data =>
 
 export const deleteMentor = mentorId =>
     axios.post(API_URL + `api/mentors/${mentorId}`, { withCredentials: true })
+
+export const postBooking = data =>
+    axios.post(API_URL + 'api/booking', data, { withCredentials: true })
+
+export const getMentorAvailablity = mentorId =>
+    axios.get(API_URL, { withCredentials: true })

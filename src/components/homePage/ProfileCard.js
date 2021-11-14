@@ -29,18 +29,12 @@ const ProfileCard = ({
                                 <Card.Text className={classes.points}>
                                     {mentor.role}
                                 </Card.Text>
-                                <Card.Text className={classes.points}>
-                                    {mentor.category}
-                                </Card.Text>
-                                <Card.Text className={classes.points}>
-                                    {mentor.course}
-                                </Card.Text>
                             </Card.Body>
                         </Row>
                     </Col>
                     <Col md={8} style={{ position: "relative" }}>
                         <Card.Body>
-                            <Card.Title className={classes.profileObjectives}>What will you learn</Card.Title>
+                            {/* <Card.Title className={classes.profileObjectives}>What will you learn</Card.Title>
                             <ul className={classes.listParent}>
                                 <li>
                                     <p className={classes.points}>
@@ -62,7 +56,13 @@ const ProfileCard = ({
                                         Additional materials
                                     </p>
                                 </li>
-                            </ul>
+                            </ul> */}
+                            <Card.Text className={classes.profileDesc}>
+                                {mentor.category}
+                            </Card.Text>
+                            <Card.Text className={classes.profileDesc}>
+                                {mentor.course}
+                            </Card.Text>
                             <Card.Text className={classes.profileDesc}>
                                 {mentor.shortDescription}
                             </Card.Text>
@@ -73,7 +73,7 @@ const ProfileCard = ({
                                 <CustomButton
                                     variant="primary"
                                     text="Book"
-                                    onClick={() => openBookingMenu()}
+                                    onClick={() => openBookingMenu({ show: true, mentor: mentor })}
                                     styles={{ float: "right" }} />
                             </div>
                         </Card.Body>

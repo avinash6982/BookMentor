@@ -5,13 +5,9 @@ import { getMentors } from "../api/MasterDataService";
 import LayoutWrapper from "../common/wrapper/LayoutWrapper";
 import HomepageComponent from "../components/homePage";
 
-const fetchMentors = () =>
-    getMentors()
-        .then(res => res.data.data)
-
 const Home = () => {
 
-    const { status } = useQuery("mentors", fetchMentors)
+    const { status } = useQuery("mentors", getMentors)
 
     return (
         <LayoutWrapper>

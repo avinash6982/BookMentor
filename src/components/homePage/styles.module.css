@@ -84,7 +84,7 @@
 }
 
 .profileName {
-    font-size: 18px !important;
+    font-size: 20px !important;
 }
 
 .points {
@@ -129,9 +129,16 @@
 }
 
 .timeItem {
+    transition: transform .5s;
+    padding-bottom: 1rem;
     font-size: 18px;
 }
 
+.timeItem:hover {
+    transform: scale(1.1);
+}
+
 .timeItemActive {
+    padding-bottom: 1rem;
     font-size: 24px;
 }

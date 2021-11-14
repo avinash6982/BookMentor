@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 
 import TransitionWrapper from "../../common/wrapper/TransitionWrapper";
 import Results from "./Results";
@@ -11,18 +12,21 @@ const HomepageComponent = ({
     status
 }) => {
 
-    const [scheduleShow, setScheduleShow] = useState(false)
+    const [scheduleMenu, setScheduleMenu] = useState({
+        show: false,
+        mentor: {}
+    })
 
     return (
         <TransitionWrapper>
             <Schedule
                 onSubmit={() => console.log("booking")}
-                handleClose={() => setScheduleShow(false)}
-                show={scheduleShow} />
+                handleClose={() => setScheduleMenu({ show: false, mentor: {} })}
+                scheduleMenu={scheduleMenu} />
             <SearchOptions />
             <ResultsHeader />
             <DataFetchWrapper status={status}>
-                <Results openBookingMenu={() => setScheduleShow(true)} />
+                <Results openBookingMenu={setScheduleMenu} />
             </DataFetchWrapper>
         </TransitionWrapper>
     );
