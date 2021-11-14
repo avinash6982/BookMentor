@@ -189,13 +189,8 @@ const AddMentor = ({
 
         }))
 
-    const onSubmit = () => {
+    const onSubmit = () =>
         addMentor.mutate(state)
-
-        // addMentor(state)
-        //     .then(res => res.status === 200 && handleClose())
-        //     .catch(err => console.log(err.response))
-    }
 
     return (
         <Modal show={show} dialogClassName={classes.modalContainer} onHide={handleClose}>

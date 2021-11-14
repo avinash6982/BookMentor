@@ -12,6 +12,9 @@ const AdminComponent = ({
 
     const [addMentorVisible, setAddMentorVisible] = useState(false)
 
+    if (addMentorVisible && addMentor.isSuccess)
+        setAddMentorVisible(false)
+
     return (
         <TransitionWrapper>
             <AddMentor

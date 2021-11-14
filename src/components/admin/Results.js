@@ -60,7 +60,6 @@ const Results = ({ removeMentor }) => {
 
     const queryClient = useQueryClient()
     let queryResult = queryClient.getQueryState()
-    queryClient.invalidateQueries("mentors")
 
     return (
         <Container>
