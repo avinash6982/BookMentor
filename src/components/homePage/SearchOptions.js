@@ -34,7 +34,7 @@ const DropDown = () => {
             <Form.Select onChange={e => console.log(e.target.value)} className={classes.select}>
                 <DataFetchWrapper status={status}>
                     {
-                        Object.values(data)
+                        data && Object.values(data)
                             .map(item => <option>{item.name}</option>)
                     }
                 </DataFetchWrapper>

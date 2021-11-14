@@ -14,22 +14,28 @@ export const getCourses = () =>
     axios.get(API_URL + "api/courses", { withCredentials: true })
         .then(res => res.data.data)
 
-export const postMentor = data =>
-    axios.post(
-        API_URL + 'api/mentors',
-        data,
-        {
-            withCredentials: true,
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        })
+//TODO: how to pass mentorId
+export const getMentorAvailablity = mentorId =>
+    axios.get(API_URL + 'api/mentors/availability', { withCredentials: true })
 
+//TODO: where to get userID
+export const getBookings = userId =>
+    axios.post(API_URL + 'api/booking', null, { params: { userId: userId } })
+
+
+
+
+
+export const postMentor = data =>
+    axios.post(API_URL + 'api/mentors', data, { withCredentials: true, headers: { "Content-Type": "multipart/form-data" } })
+
+export const updateMentor = (mentorId, data) =>
+    axios.patch(API_URL + `api/mentors/${mentorId}`, data, { withCredentials: true, headers: { "Content-Type": "multipart/form-data" } })
+
+//TODO: returns 401, unauthorized
 export const deleteMentor = mentorId =>
     axios.post(API_URL + `api/mentors/${mentorId}`, { withCredentials: true })
 
+//TODO: where to get userId
 export const postBooking = data =>
     axios.post(API_URL + 'api/booking', data, { withCredentials: true })
-
-export const getMentorAvailablity = mentorId =>
-    axios.get(API_URL, { withCredentials: true })
