@@ -1,39 +1,36 @@
 import React, { useState } from "react";
 import { Modal, Col, Row } from "react-bootstrap";
-import { useQueryClient } from "react-query";
 
 import CustomButton from "../../common/buttons/CustomButton";
 import CustomCalendar from "../../common/calendar";
+import { bookingDataResolver } from "../../services/DataResolver";
 import { getTimeSlots } from "../../services/validators/TimeConverter";
 
 import classes from "./styles.module.css";
 
 const TimeSelector = ({ time, setTime, timeSlots }) => {
 
-    const [active, setActive] = useState(time || 0)
+    const [active, setActive] = useState(time || "1")
     const onSelectTime = id => {
         setActive(id)
-        setTime(timeSlots[id][0])
+        setTime({ time: timeSlots[id][0].toString() })
     }
 
-    return (
-        <>
-            {
-                Object.keys(timeSlots)
-                    .map(item =>
-                        <Row
-                            onClick={() => onSelectTime(item)}
-                            key={item}
-                            className={item === active.toString() ? classes.timeItemActive : classes.timeItem}>
-                            {timeSlots[item][1]}
-                        </Row>)
-            }
-        </>
-    );
+    return (<>
+        {
+            Object.keys(timeSlots)
+                .map(item =>
+                    <Row
+                        onClick={() => onSelectTime(item)}
+                        key={item}
+                        className={timeSlots[item][0].toString() === active.toString() ? classes.timeItemActive : classes.timeItem}>
+                        {timeSlots[item][1]}
+                    </Row>)
+        }
+    </>);
 }
 
 const Schedule = ({
-    onSubmit,
     handleClose,
     scheduleMenu
 }) => {
@@ -43,13 +40,18 @@ const Schedule = ({
         userId: "",
         mentorId: "",
         date: new Date(),
-        time: timeSlots[0] ? timeSlots[0][0] : ""
+        time: "1"
     })
     const updateBookingData = data =>
         setBookingData(previousState => ({
             ...previousState,
             ...data
         }))
+
+    const onSubmit = () => {
+        console.log(bookingDataResolver(bookingData))
+        // console.log(bookingData)
+    }
 
     return (
         <Modal size="lg" centered show={scheduleMenu.show} dialogClassName={classes.modalContainer} onHide={handleClose}>
