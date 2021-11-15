@@ -3,10 +3,16 @@
     color: white;
     text-align: left;
     padding: 3em;
-    height: 10rem;
     position: absolute;
     bottom: 0;
 }
+
+@media only screen and (in-width: 600px) {
+    .footerContainer {
+        height: 10rem;
+    }
+}
+
 .footerLogo {
     font-size: 40px;
 }

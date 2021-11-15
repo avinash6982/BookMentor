@@ -59,8 +59,8 @@ const Profile = ({ mentor, removeMentor }) => {
 const Results = ({ removeMentor }) => {
 
     const queryClient = useQueryClient()
-    let queryResult = queryClient.getQueryState()
-
+    let queryResult = queryClient.getQueryState("mentors")
+    
     return (
         <Container>
             <DataFetchWrapper status={queryResult.status}>

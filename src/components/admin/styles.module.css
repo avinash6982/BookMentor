@@ -3,6 +3,15 @@
     width: 80%;
 }
 
+@media only screen and (max-width: 600px) {
+    .contentVerticalCenter, .resultsHeader {
+        padding: 0.2rem;
+        display: grid !important;
+        place-items: center;
+        text-align: center;
+    }
+}
+
 .contentVerticalCenter {
     display: flex;
     align-items: center;

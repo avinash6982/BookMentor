@@ -3,7 +3,7 @@ import React from "react";
 const LayoutWrapper = props => {
 
     return (
-        <div style={{ paddingBottom: "10rem" }}>
+        <div style={{ paddingBottom: "25rem" }}>
             {props.children}
         </div>
     );

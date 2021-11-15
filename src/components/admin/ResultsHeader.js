@@ -31,17 +31,17 @@ const ResultsHeader = ({
         <Container className={classes.resultsHeaderContainer} fluid>
             <Container>
                 <Row>
-                    <Col className={classes.contentVerticalCenter}>
+                    <Col sm={4} className={classes.contentVerticalCenter}>
                         <p style={{ marginBottom: "0px" }} className="textLarge">
                             Manage mentors
                         </p>
                     </Col>
 
-                    <Col>
+                    <Col sm={4} className={classes.resultsHeader}>
                         <SearchBar />
                     </Col>
 
-                    <Col>
+                    <Col sm={4} className={classes.resultsHeader}>
                         <CustomButton
                             variant="default"
                             text="Add"

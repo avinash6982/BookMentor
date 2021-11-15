@@ -23,7 +23,6 @@ const Admin = () => {
 
     return (
         <LayoutWrapper>
-            {console.log("eya")}
             <AdminComponent
                 removeMentor={removeMentor}
                 addMentor={addMentor} />
