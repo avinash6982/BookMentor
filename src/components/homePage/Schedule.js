@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Col, Row } from "react-bootstrap";
+import { useQueryClient } from "react-query";
+import { postBooking } from "../../api/MasterDataService";
 
 import CustomButton from "../../common/buttons/CustomButton";
 import CustomCalendar from "../../common/calendar";
@@ -36,11 +38,11 @@ const Schedule = ({
     scheduleMenu
 }) => {
 
+    let queryClient = useQueryClient()
+    const userData = queryClient.getQueryState("userData")
     const timeSlots = getTimeSlots(scheduleMenu.mentor.startTime, scheduleMenu.mentor.endTime)
 
     const [bookingData, setBookingData] = useState({
-        userId: "",
-        mentorId: "",
         date: new Date(),
         time: "1"
     })
@@ -52,13 +54,16 @@ const Schedule = ({
         }))
 
     const onSubmit = () => {
-        console.log(bookingDataResolver(bookingData))
-        setAlert({
-            show: true,
-            text: "Booking success",
-            variant: "primary"
-        })
-        handleClose()
+        postBooking(bookingDataResolver(bookingData, userData.data.userId, scheduleMenu.mentor._id))
+            .then(res => {
+                setAlert({
+                    show: true,
+                    text: "Booking added",
+                    variant: "primary"
+                })
+                handleClose()
+            })
+            .catch(err => console.log(err.response))
     }
 
     return (

@@ -31,14 +31,15 @@ const DropDown = () => {
 
     return (
         <Container className={classes.selectContainer}>
-            <Form.Select onChange={e => console.log(e.target.value)} className={classes.select}>
-                <DataFetchWrapper status={status}>
+            <DataFetchWrapper status={status}>
+                <Form.Select onChange={e => console.log(e.target.value)} className={classes.select}>
                     {
                         data && Object.values(data)
-                            .map(item => <option>{item.name}</option>)
+                            .map(item => <option key={item._id}>{item.name}</option>)
                     }
-                </DataFetchWrapper>
-            </Form.Select>
+
+                </Form.Select>
+            </DataFetchWrapper>
         </Container>
     );
 }

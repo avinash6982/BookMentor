@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL
 
+export const getUser = () =>
+    axios.get(API_URL + 'api/user', { withCredentials: true })
+        .then(res => res.data)
+
 export const getMentors = () =>
     axios.get(API_URL + 'api/mentors', { withCredentials: true, headers: { responseType: 'arraybuffer' } })
         .then(res => res.data.data)
@@ -20,7 +24,7 @@ export const getMentorAvailablity = mentorId =>
 
 //TODO: where to get userID
 export const getBookings = userId =>
-    axios.post(API_URL + 'api/booking', null, { params: { userId: userId } })
+    axios.post(API_URL + 'api/bookings', null, { params: { userId: userId } })
 
 
 
@@ -38,4 +42,4 @@ export const deleteMentor = mentorId =>
 
 //TODO: where to get userId
 export const postBooking = data =>
-    axios.post(API_URL + 'api/booking', data, { withCredentials: true })
+    axios.post(API_URL + 'api/bookings', data, { withCredentials: true })

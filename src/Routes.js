@@ -3,6 +3,7 @@ import {
     Route,
     useLocation
 } from "react-router-dom";
+import { useQuery } from "react-query";
 
 import LaunchPage from "./container/LaunchPage";
 import Home from "./container/Home";
@@ -13,14 +14,14 @@ import { UserRoute } from "./UserRoute";
 import Admin from "./container/Admin";
 import { AdminRoute } from "./AdminRoute";
 
-function useQuery() {
+function useQuerySearch() {
 
     return new URLSearchParams(useLocation().search);
 }
 
 export default function Routes() {
 
-    let query = useQuery();
+    let query = useQuerySearch();
 
     return (
         <Switch>
