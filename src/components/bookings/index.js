@@ -3,11 +3,11 @@ import { Container, Row } from "react-bootstrap";
 
 import Heading from "./Heading";
 import BookingItem from "./BookingItem";
-
-import classes from "./styles.module.css";
 import DataFetchWrapper from "../../common/wrapper/DataFetchWrapper";
 
-const BookingsComponent = ({ status }) => {
+import classes from "./styles.module.css";
+
+const BookingsComponent = ({ status, data }) => {
 
     return (
         <Container className={classes.container}>
