@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Form, Dropdown } from "react-bootstrap";
-import { useQuery, useQueryClient } from "react-query";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import { useQuery } from "react-query";
 import { getCategories } from "../../api/MasterDataService";
 
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";

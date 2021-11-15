@@ -5,15 +5,17 @@ import Heading from "./Heading";
 import BookingItem from "./BookingItem";
 
 import classes from "./styles.module.css";
+import DataFetchWrapper from "../../common/wrapper/DataFetchWrapper";
 
-const BookingsComponent = () => {
+const BookingsComponent = ({ status }) => {
 
     return (
         <Container className={classes.container}>
             <Row>
                 <Heading />
-                <BookingItem />
-                <BookingItem />
+                <DataFetchWrapper status={status}>
+                    <BookingItem />
+                </DataFetchWrapper>
             </Row>
         </Container>
     );

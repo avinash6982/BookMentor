@@ -3,7 +3,6 @@ import {
     Route,
     useLocation
 } from "react-router-dom";
-import { useQuery } from "react-query";
 
 import LaunchPage from "./container/LaunchPage";
 import Home from "./container/Home";

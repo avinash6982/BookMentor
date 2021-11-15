@@ -7,11 +7,11 @@ import BookingsComponent from "../components/bookings";
 
 export default function Bookings() {
 
-    const {status} = useQuery("bookings", getBookings )
+    const { status } = useQuery("bookings", getBookings)
 
     return (
         <LayoutWrapper>
-            <BookingsComponent />
+            <BookingsComponent status={status} />
         </LayoutWrapper>
     );
 }
