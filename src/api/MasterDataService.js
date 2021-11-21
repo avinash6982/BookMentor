@@ -24,7 +24,7 @@ export const getMentorAvailablity = async mentorId =>
 
 //TODO: params not working, returns 400
 export const getBookings = async userId =>
-    await axios.post(API_URL + `api/bookings`, null, { params: { userId: userId } })
+    await axios.post(API_URL + `api/bookings`, { params: { userId: userId } })
 
 
 
@@ -38,7 +38,7 @@ export const updateMentor = async (mentorId, data) =>
 
 //TODO: returns 401, unauthorized
 export const deleteMentor = async mentorId =>
-    await axios.post(API_URL + `api/mentors/${mentorId}`, { withCredentials: true })
+    await axios.delete(API_URL + `api/mentors/${mentorId}`, { withCredentials: true })
 
 export const postBooking = async data =>
     await axios.post(API_URL + 'api/bookings', data, { withCredentials: true })

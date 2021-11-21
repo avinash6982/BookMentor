@@ -36,25 +36,26 @@ const Signup = ({
         showConfirmPasswordError: false
     })
 
-    const [formCompleted, setFormCompleted] = useState(false)
+    const [formCompleted, setFormCompleted] = useState(true)
 
     const signupHandler = () =>
-        (formCompleted &&
-            Object.values(errorMessages).every(item => item === false)) &&
-        onSignup({
-            fullName: state.fullName,
-            email: state.email,
-            password: state.password
-        })
+        Object.values(state).every(item => item !== "") ?
+            (formCompleted &&
+                Object.values(errorMessages).every(item => item === false)) &&
+            onSignup({
+                fullName: state.fullName,
+                email: state.email,
+                password: state.password
+            }) : setFormCompleted(false)
 
     useEffect(() => {
+
         setErrorMessages({
             showFullNameError: state.fullName !== "" ? !fullNameValidator(state.fullName) : false,
             showEmailError: state.email !== "" ? !emailValidator(state.email) : false,
             showPasswordError: state.password !== "" ? !passwordValidator(state.password) : false,
             showConfirmPasswordError: state.confirmPassword !== "" ? !confirmPasswordValidator(state.password, state.confirmPassword) : false
         })
-        Object.values(state).every(item => item !== "") ? setFormCompleted(true) : setFormCompleted(false)
     }, [state])
 
     return (

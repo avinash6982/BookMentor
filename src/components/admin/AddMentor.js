@@ -206,7 +206,7 @@ const AddMentor = ({
                 <CustomButton
                     variant="secondary"
                     styles={{ float: "right" }}
-                    text="cancel"
+                    text="Cancel"
                     onClick={handleClose} />
                 <CustomButton
                     variant="primary"

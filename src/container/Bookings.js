@@ -8,10 +8,10 @@ import BookingsComponent from "../components/bookings";
 export default function Bookings() {
 
     const queryClient = useQueryClient()
-    const userData = queryClient.getQueryState("userData")
+    const userData = queryClient.getQueryData("userData")
 
     const fetchBookings = () =>
-        getBookings(userData.data.userId)
+        getBookings('6192883fa3e1958a11085218')
 
     const { data, status } = useQuery("bookings", fetchBookings)
 

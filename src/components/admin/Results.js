@@ -8,7 +8,7 @@ import DataFetchWrapper from "../../common/wrapper/DataFetchWrapper";
 
 import classes from "./styles.module.css";
 
-const Profile = ({ mentor, removeMentor }) => {
+const Profile = ({ mentor, editMentor, removeMentor }) => {
 
     const history = useHistory()
 
@@ -17,12 +17,12 @@ const Profile = ({ mentor, removeMentor }) => {
             <Card className={classes.profileContainer}>
                 <span className={classes.cardActions}>
                     <FontAwesomeIcon
-                        onClick={() => console.log("edit profile")}
+                        onClick={() => editMentor(true, mentor)}
                         tooltip="edit"
                         paddingRight="1rem"
                         title="pencil" />
                     <FontAwesomeIcon
-                        onClick={() => removeMentor(mentor._id)}
+                        onClick={() => removeMentor.mutate(mentor._id)}
                         tooltip="delete"
                         title="trash" />
                 </span>
@@ -56,11 +56,11 @@ const Profile = ({ mentor, removeMentor }) => {
     );
 }
 
-const Results = ({ removeMentor }) => {
+const Results = ({ editMentor, removeMentor }) => {
 
     const queryClient = useQueryClient()
     let queryResult = queryClient.getQueryState("mentors")
-    
+
     return (
         <Container>
             <DataFetchWrapper status={queryResult.status}>
@@ -69,7 +69,11 @@ const Results = ({ removeMentor }) => {
                         queryResult.data &&
                         Object.values(queryResult.data)
                             .map(item =>
-                                <Profile key={item._id} mentor={item} removeMentor={removeMentor} />)
+                                <Profile
+                                    key={item._id}
+                                    mentor={item}
+                                    editMentor={editMentor}
+                                    removeMentor={removeMentor} />)
                     }
                 </Row>
             </DataFetchWrapper>

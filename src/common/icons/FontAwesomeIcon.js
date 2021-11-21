@@ -1,3 +1,5 @@
+import classes from "./styles.module.css";
+
 const FontAwesomeIcon = ({
     title,
     size,
@@ -22,7 +24,7 @@ const FontAwesomeIcon = ({
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseOut={onMouseOut}
-        className={`fa fa-${title}`}
+        className={`fa fa-${title} ${classes.faIcon}`}
         style={{ ...styles }}
         title={tooltip}
         aria-hidden="true">
