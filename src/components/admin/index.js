@@ -13,6 +13,7 @@ const AdminComponent = ({
     addMentor
 }) => {
 
+    const [filterText, setFilterText] = useState("")
     const [addMentorVisible, setAddMentorVisible] = useState(false)
     const [editMode, setEditMode] = useState({
         mentorDetails: "",
@@ -43,8 +44,10 @@ const AdminComponent = ({
                 show={editMode.show}
                 handleClose={() => toggleEditMode(false)} />
             <ResultsHeader
+                setFilterText={setFilterText}
                 setAddMentorVisible={setAddMentorVisible} />
             <Results
+                filterText={filterText}
                 editMentor={toggleEditMode}
                 removeMentor={removeMentor} />
         </TransitionWrapper>

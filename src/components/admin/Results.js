@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Col, Container, Row, Card } from "react-bootstrap";
 import { useQueryClient } from "react-query";
@@ -56,16 +56,52 @@ const Profile = ({ mentor, editMentor, removeMentor }) => {
     );
 }
 
-const Results = ({ editMentor, removeMentor }) => {
+const Results = ({ filterText, editMentor, removeMentor }) => {
 
     const queryClient = useQueryClient()
     let queryResult = queryClient.getQueryState("mentors")
+    const [results, setResults] = useState()
+
+    useEffect(() => {
+        if (filterText !== "" && queryResult.data) {
+
+            let res = Object.values(queryResult.data)
+                .filter(item => item.name.toLowerCase().includes(filterText))
+            if (res.length === 0)
+                setResults("No results found")
+            else
+                setResults(res)
+
+        }
+        else
+            setResults(null)
+    }, [filterText])
 
     return (
         <Container>
             <DataFetchWrapper status={queryResult.status}>
                 <Row>
                     {
+                        typeof (results) === "string" ?
+                            <h6>{results}</h6> :
+                            results ?
+                                Object.values(results)
+                                    .map(item =>
+                                        <Profile
+                                            key={item._id}
+                                            mentor={item}
+                                            editMentor={editMentor}
+                                            removeMentor={removeMentor} />) :
+                                queryResult.data &&
+                                Object.values(queryResult.data)
+                                    .map(item =>
+                                        <Profile
+                                            key={item._id}
+                                            mentor={item}
+                                            editMentor={editMentor}
+                                            removeMentor={removeMentor} />)
+                    }
+                    {/* {
                         queryResult.data &&
                         Object.values(queryResult.data)
                             .map(item =>
@@ -74,7 +110,7 @@ const Results = ({ editMentor, removeMentor }) => {
                                     mentor={item}
                                     editMentor={editMentor}
                                     removeMentor={removeMentor} />)
-                    }
+                    } */}
                 </Row>
             </DataFetchWrapper>
         </Container>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row, Form } from "react-bootstrap";
 
 import FontAwesomeIcon from "../../common/icons/FontAwesomeIcon";
@@ -6,16 +6,22 @@ import CustomButton from "../../common/buttons/CustomButton";
 
 import classes from "./styles.module.css";
 
-const SearchBar = () => {
+const SearchBar = ({
+    setFilterText
+}) => {
+
+    const [searchText, setSearchText] = useState("")
 
     return (
         <Form.Group className={classes.inputContainer}>
             <FontAwesomeIcon
-                onClick={() => console.log("search")}
+                onClick={() => setFilterText(searchText)}
                 title="search"
                 size="30"
                 color="#2A4F96" />
             <Form.Control
+                onKeyPress={e => e.charCode === 13 && setFilterText(searchText)}
+                onChange={e => setSearchText(e.target.value.toLowerCase())}
                 className={classes.searchBar}
                 type="text"
                 placeholder="Search by mentor name" />
@@ -24,6 +30,7 @@ const SearchBar = () => {
 }
 
 const ResultsHeader = ({
+    setFilterText,
     setAddMentorVisible
 }) => {
 
@@ -38,7 +45,7 @@ const ResultsHeader = ({
                     </Col>
 
                     <Col sm={4} className={classes.resultsHeader}>
-                        <SearchBar />
+                        <SearchBar setFilterText={setFilterText} />
                     </Col>
 
                     <Col sm={4} className={classes.resultsHeader}>
