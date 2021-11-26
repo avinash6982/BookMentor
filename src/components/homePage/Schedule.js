@@ -12,7 +12,7 @@ import classes from "./styles.module.css";
 
 const TimeSelector = ({ time, setTime, timeSlots }) => {
 
-    const [active, setActive] = useState(time || "1")
+    const [active, setActive] = useState(time || "0")
     const onSelectTime = id => {
         setActive(id)
         setTime({ time: timeSlots[id][0].toString() })
@@ -25,7 +25,7 @@ const TimeSelector = ({ time, setTime, timeSlots }) => {
                     <Row
                         onClick={() => onSelectTime(item)}
                         key={item}
-                        className={timeSlots[item][0].toString() === active.toString() ? classes.timeItemActive : classes.timeItem}>
+                        className={item === active.toString() ? classes.timeItemActive : classes.timeItem}>
                         {timeSlots[item][1]}
                     </Row>)
         }
@@ -44,7 +44,7 @@ const Schedule = ({
 
     const [bookingData, setBookingData] = useState({
         date: new Date(),
-        time: "1"
+        time: "0"
     })
 
     const updateBookingData = data =>
