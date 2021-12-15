@@ -10,7 +10,7 @@ const FooterComponent = () => {
             <Container>
                 <Row>
                     <Col sm={4}>
-                        <p className={classes.footerLogo}>FastClass</p>
+                        <p className={classes.footerLogo}>BookMentor</p>
                     </Col>
                     <Col sm={4}>
                         <p> Contact us </p>

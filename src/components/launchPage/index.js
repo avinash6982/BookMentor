@@ -21,7 +21,7 @@ const LaunchPageComponent = ({
                 <Col lg={6} className={`${classes.columnCenter} ${classes.columnRightBorder}`}>
                     <TransitionWrapper show={true}>
                         <h1 className={classes.heading}>
-                            FastClass
+                            BookMentor
                         </h1>
                     </TransitionWrapper>
                 </Col>
